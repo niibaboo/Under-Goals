@@ -18,10 +18,12 @@ IQ instead uses leagues picked FOR being low-scoring:
   Serie A (Italy):        2.43 goals/match (2025-26)
   Greek Super League:     2.45-2.57 goals/match (2024-25, 2025-26)
   Ligue 2 (France):       2.49 goals/match (2025-26)
-  Segunda División (Spain): 2.55-2.63 goals/match (2024-25, 2025-26)
 
-All five sit consistently below 2.65 across multiple recent seasons —
-this is a curated list based on actual multi-season data, not a guess.
+All four sit consistently below 2.65 across multiple recent seasons —
+a curated list based on actual multi-season data, not a guess. A 5th
+candidate, Segunda División (Spain), was dropped after 9 name variants
+plus a broad search all failed against TheStatsAPI — it appears not to
+be covered by this data source at all.
 
 API CALL BUDGET — cheaper than Match IQ per team:
 This model only needs each team's GOALS SCORED/CONCEDED, which the base
@@ -77,10 +79,9 @@ LEAGUE_SEARCH_NAMES = [
                                 # League Greece" doesn't match anything, this does
                                 # (id comp_4008, country Greece)
     "Ligue 2",
-    "Segunda División",  # STILL UNCONFIRMED — both with and without the accent
-                          # came back NOT FOUND. Needs another name variant
-                          # (LaLiga2? La Liga 2? Segunda?) before this league
-                          # will actually resolve — see the follow-up debug run.
+    # Segunda División (Spain) dropped — 9 name variants plus a broad Spain
+    # search all failed via check_segunda.py; TheStatsAPI appears not to
+    # cover this league at all, not just under an unexpected name.
 ]
 
 
