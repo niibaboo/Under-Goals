@@ -72,9 +72,15 @@ SCANNER_UNDER35_MIN = 80
 LEAGUE_SEARCH_NAMES = [
     "Serie A",
     "Serie B",
-    "Super League Greece",
+    "Stoiximan Super League",  # Greek Super League's sponsor-branded exact name —
+                                # confirmed via check_under_iq_leagues.py; "Super
+                                # League Greece" doesn't match anything, this does
+                                # (id comp_4008, country Greece)
     "Ligue 2",
-    "Segunda División",
+    "Segunda División",  # STILL UNCONFIRMED — both with and without the accent
+                          # came back NOT FOUND. Needs another name variant
+                          # (LaLiga2? La Liga 2? Segunda?) before this league
+                          # will actually resolve — see the follow-up debug run.
 ]
 
 
@@ -127,16 +133,33 @@ def poisson_cdf(k, lam):
 
 
 def find_competition(name, key):
+    """Search finds the competition, but its result rows don't include
+    current_season_id at all (confirmed via a live API dump — the search
+    endpoint's fields are id/name/country/.../xg_available, no season
+    field anywhere). Only the single-competition DETAIL endpoint
+    (GET /football/competitions/{id}) has it. So every match here gets
+    a follow-up detail fetch to actually get a usable season id,
+    regardless of what the search row alone would suggest."""
     data = _get("/football/competitions", key, params={"search": name, "per_page": 5})
     if not data:
         return None
+
+    match = None
     for c in data.get("data", []):
         if c["name"].lower() == name.lower():
-            return c
-    if data.get("data"):
+            match = c
+            break
+    if not match and data.get("data"):
         print(f"  [!] No exact match for '{name}' — using first result: "
               f"'{data['data'][0]['name']}'. Verify this is correct.")
-        return data["data"][0]
+        match = data["data"][0]
+    if not match:
+        return None
+
+    detail = _get(f"/football/competitions/{match['id']}", key)
+    if detail and detail.get("data"):
+        match = {**match, **detail["data"]}  # merges in current_season_id etc.
+    return match
     return None
 
 
