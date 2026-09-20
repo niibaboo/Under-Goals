@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Under IQ</title></head>
+<body style="background:#0b0f14;color:white;font-family:Arial;padding:12px;max-width:600px;margin:auto">
+<h2 style="text-align:center;margin-bottom:2px">📉 Under IQ — Full Stats</h2>
+<p style="text-align:center;color:#888;font-size:11px;margin-top:0">Powered by TheStatsAPI · 2026-09-20 16:00</p>
+<p style="text-align:center;margin:6px 0 0;font-size:12px">Daily Signals: <a href="scanners/under25/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 2.5</a>·<a href="scanners/under35/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 3.5</a></p>
+<p style="text-align:center;margin:12px 0 4px"><a href="under_iq_predictions.csv" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Download CSV</a></p>
+
+<div id="builderPanel" style="background:#121820;border:1px solid #233040;border-radius:12px;padding:16px;margin:14px 0">
+  <div style="font-size:15px;font-weight:800;margin-bottom:10px">🎯 Daily Acca Builder</div>
+  <div id="builderCategoryToggles" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;font-size:12px"></div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap">
+    <label style="font-size:12px;color:#8b98a8">Target odds:</label>
+    <input type="number" step="0.05" min="1.1" value="2.65" id="targetOdds" style="width:70px;background:#161d27;border:1px solid #233040;color:white;border-radius:6px;padding:6px 8px;font-size:13px">
+    <label style="font-size:12px;color:#8b98a8">Max legs:</label>
+    <input type="number" step="1" min="2" value="6" id="maxLegs" style="width:70px;background:#161d27;border:1px solid #233040;color:white;border-radius:6px;padding:6px 8px;font-size:13px">
+    <button onclick="buildAcca()" style="background:#22c55e;color:#04140a;font-weight:700;border:none;padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer">Build</button>
+    <button onclick="buildAcca()" style="background:#161d27;border:1px solid #233040;color:white;padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer">🔀 Shuffle</button>
+  </div>
+  <div id="builderResult" style="font-size:12px;color:#8b98a8">
+    Defaults to your 2.3–3.0 target range. Capped at ONE leg per match — Under 2.5
+    and Under 3.5 on the same fixture are correlated (not real diversification),
+    so the builder never stacks both from one game. Tap Shuffle for a fresh pick
+    among equally-safe options without changing your settings.
+  </div>
+</div>
+
+<p style="text-align:center;color:#888">No fixtures found in the current window.</p>
+
+<script>
+const LEGS = [];
+
+function initToggles() {
+  const container = document.getElementById('builderCategoryToggles');
+  const cats = [...new Set(LEGS.map(l => l.category))];
+  container.innerHTML = cats.map(c => `
+    <label style="display:flex;align-items:center;gap:4px;color:white;cursor:pointer"><input type="checkbox" class="catToggle" value="${c}" checked> ${c}</label>
+  `).join('');
+}
+function shuffleArr(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function tieredShuffle(legs, bandSize) {
+  const bands = {};
+  legs.forEach(l => {
+    const band = Math.floor(l.prob / bandSize);
+    (bands[band] = bands[band] || []).push(l);
+  });
+  const keys = Object.keys(bands).map(Number).sort((a,b) => b-a);
+  let result = [];
+  keys.forEach(k => { result = result.concat(shuffleArr(bands[k])); });
+  return result;
+}
+function buildAcca() {
+  const target = parseFloat(document.getElementById('targetOdds').value) || 2.65;
+  const maxLegs = parseInt(document.getElementById('maxLegs').value) || 6;
+  const activeCats = [...document.querySelectorAll('.catToggle:checked')].map(el => el.value);
+
+  const byCategory = {};
+  LEGS.filter(l => l.prob > 0 && activeCats.includes(l.category)).forEach(l => {
+    (byCategory[l.category] = byCategory[l.category] || []).push(l);
+  });
+  const categories = Object.keys(byCategory);
+  categories.forEach(c => { byCategory[c] = tieredShuffle(byCategory[c], 5); });
+  const cursor = {};
+  categories.forEach(c => cursor[c] = 0);
+
+  const chosen = [];
+  const subjectCount = {};  // capped at 1 per MATCH (see module docstring —
+                               // Under 2.5 + Under 3.5 on the same fixture are
+                               // correlated, not real diversification)
+  let combinedOdds = 1;
+  let addedThisPass = true;
+
+  while (addedThisPass && combinedOdds < target && chosen.length < maxLegs) {
+    addedThisPass = false;
+    for (const cat of categories) {
+      if (combinedOdds >= target || chosen.length >= maxLegs) break;
+      const arr = byCategory[cat];
+      while (cursor[cat] < arr.length) {
+        const leg = arr[cursor[cat]];
+        cursor[cat]++;
+        if (subjectCount[leg.subject]) continue;
+        chosen.push(leg);
+        combinedOdds *= 100 / leg.prob;
+        subjectCount[leg.subject] = 1;
+        addedThisPass = true;
+        break;
+      }
+    }
+  }
+
+  const out = document.getElementById('builderResult');
+  if (!chosen.length) { out.innerHTML = 'No legs available to build from.'; return; }
+
+  const rows = chosen.map(l => `
+    <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #233040">
+      <span>${l.match}<br><span style="color:#facc15">${l.category}</span> <span style="color:#8b98a8">· ${l.league}</span>
+      <br><span style="color:#8b98a8;font-size:10px">${l.detail}</span></span>
+      <span style="text-align:right"><span style="color:#facc15;font-weight:bold">${l.prob}%</span></span>
+    </div>
+  `).join('');
+
+  const inRange = combinedOdds >= 2.3 && combinedOdds <= 3.0;
+  const rangeNote = inRange
+    ? ' <span style="color:#22c55e">(in your 2.3–3.0 target range)</span>'
+    : ' <span style="color:#facc15">(outside your 2.3–3.0 target — adjust Target odds or Max legs)</span>';
+  const capNote = chosen.length >= maxLegs && combinedOdds < target
+    ? ' (hit the leg cap before reaching target — raise Max legs or lower Target odds)'
+    : (combinedOdds < target ? ' (ran out of legs before reaching target)' : '');
+
+  out.innerHTML = `
+    <div style="color:white;font-size:13px;margin-bottom:6px">
+      ${chosen.length} legs · est. combined odds ~<b>${combinedOdds.toFixed(2)}</b>${rangeNote}${capNote}
+    </div>
+    ${rows}
+    <div style="color:#8b98a8;font-size:10px;margin-top:8px;line-height:1.4">
+      Estimate multiplies each leg's fair odds (100/probability) — real sportsbook odds
+      include their margin, so treat this as a ranking tool, not a firm price.
+    </div>
+  `;
+}
+initToggles();
+</script>
+</body></html>
