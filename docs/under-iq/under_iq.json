@@ -1,1 +1,138 @@
-[]
+[
+  {
+    "league": "Serie B",
+    "date": "2026-09-20T17:30:00.000Z",
+    "date_key": "2026-09-20",
+    "home_team": "Modena",
+    "away_team": "Empoli",
+    "home_form": {
+      "n_games": 4,
+      "avg_scored": 1.5,
+      "avg_conceded": 0.75,
+      "goals_list": [
+        1,
+        0,
+        3,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 4,
+      "avg_scored": 0.75,
+      "avg_conceded": 1.0,
+      "goals_list": [
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    "exp_home": 1.24,
+    "exp_away": 0.75,
+    "exp_total": 1.99,
+    "under25": 68,
+    "under35": 86
+  },
+  {
+    "league": "Serie A",
+    "date": "2026-09-20T18:45:00.000Z",
+    "date_key": "2026-09-20",
+    "home_team": "Milan",
+    "away_team": "Lecce",
+    "home_form": {
+      "n_games": 4,
+      "avg_scored": 1.75,
+      "avg_conceded": 1.0,
+      "goals_list": [
+        2,
+        1,
+        2,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 4,
+      "avg_scored": 1.25,
+      "avg_conceded": 1.75,
+      "goals_list": [
+        3,
+        0,
+        0,
+        2
+      ]
+    },
+    "exp_home": 1.81,
+    "exp_away": 1.1,
+    "exp_total": 2.91,
+    "under25": 44,
+    "under35": 67
+  },
+  {
+    "league": "Stoiximan Super League",
+    "date": "2026-09-20T18:00:00.000Z",
+    "date_key": "2026-09-20",
+    "home_team": "Panetolikos",
+    "away_team": "PAOK",
+    "home_form": {
+      "n_games": 4,
+      "avg_scored": 1.75,
+      "avg_conceded": 1.0,
+      "goals_list": [
+        0,
+        2,
+        2,
+        3
+      ]
+    },
+    "away_form": {
+      "n_games": 4,
+      "avg_scored": 2.25,
+      "avg_conceded": 1.0,
+      "goals_list": [
+        2,
+        1,
+        2,
+        4
+      ]
+    },
+    "exp_home": 1.41,
+    "exp_away": 1.66,
+    "exp_total": 3.07,
+    "under25": 41,
+    "under35": 63
+  },
+  {
+    "league": "Stoiximan Super League",
+    "date": "2026-09-20T16:30:00.000Z",
+    "date_key": "2026-09-20",
+    "home_team": "PS Kalamata",
+    "away_team": "Panathinaikos",
+    "home_form": {
+      "n_games": 4,
+      "avg_scored": 1.5,
+      "avg_conceded": 1.75,
+      "goals_list": [
+        3,
+        1,
+        0,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 4,
+      "avg_scored": 2.75,
+      "avg_conceded": 0.5,
+      "goals_list": [
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    "exp_home": 0.93,
+    "exp_away": 2.72,
+    "exp_total": 3.65,
+    "under25": 29,
+    "under35": 50
+  }
+]
