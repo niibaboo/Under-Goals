@@ -215,6 +215,10 @@ def get_team_form(team_id, competition_id, season_id, key):
         team_form_cache[cache_key] = None
         return None
 
+    # Build scored/conceded newest-first (matches its current order), then
+    # reverse once at the end so goals_list reads OLDEST->NEWEST for
+    # display — same convention as Euro Ice, after the earlier mix-up
+    # there. Don't reorder `matches` itself; only the derived lists.
     scored, conceded = [], []
     for m in matches:
         is_home = m["home_team"]["id"] == team_id
@@ -223,6 +227,9 @@ def get_team_form(team_id, competition_id, season_id, key):
             continue
         scored.append(s["home"] if is_home else s["away"])
         conceded.append(s["away"] if is_home else s["home"])
+
+    scored.reverse()
+    conceded.reverse()
 
     if not scored:
         team_form_cache[cache_key] = None
@@ -264,9 +271,17 @@ def predict_goals(h_form, a_form, lg_scored, lg_conceded):
     p_under25 = poisson_cdf(2, exp_total)   # total <= 2, i.e. Under 2.5
     p_under35 = poisson_cdf(3, exp_total)   # total <= 3, i.e. Under 3.5
 
+    # Per-TEAM under-goals — each side's OWN goals, not the match total.
+    # Under 1.5 (team scores 0 or 1) is the natural line for these
+    # low-scoring leagues, where a team's own expected goals often sits
+    # right around 1.0-1.5 anyway.
+    p_home_under15 = poisson_cdf(1, exp_home)
+    p_away_under15 = poisson_cdf(1, exp_away)
+
     return {
         "exp_home": exp_home, "exp_away": exp_away, "exp_total": exp_total,
         "under25": round(p_under25 * 100), "under35": round(p_under35 * 100),
+        "home_under15": round(p_home_under15 * 100), "away_under15": round(p_away_under15 * 100),
     }
 
 
@@ -331,23 +346,36 @@ def build_all_predictions(key):
 def write_csv(predictions, path):
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["Date", "League", "HomeTeam", "AwayTeam", "ExpTotal", "Under25", "Under35"])
+        writer.writerow(["Date", "League", "HomeTeam", "AwayTeam", "ExpTotal", "Under25", "Under35",
+                          "HomeUnder15", "AwayUnder15"])
         for p in predictions:
             writer.writerow([p["date"], p["league"], p["home_team"], p["away_team"],
-                              p["exp_total"], p["under25"], p["under35"]])
+                              p["exp_total"], p["under25"], p["under35"],
+                              p["home_under15"], p["away_under15"]])
 
 
 CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038">
   <div style="font-size:11px;color:#999">{league} · {time}</div>
   <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{home_team} vs {away_team}</div>
   <div style="font-size:11px;color:#aaa">Exp Total: <span style="color:#a0e8a0">{exp_total}</span> &nbsp;|&nbsp; Under 2.5: <span style="color:#a0e8a0">{under25}%</span> &nbsp;|&nbsp; Under 3.5: <span style="color:#a0e8a0">{under35}%</span></div>
+  <div style="font-size:11px;color:#aaa;margin-top:6px">{home_team} Under 1.5: <span style="color:#a0e8a0">{home_under15}%</span> &nbsp;|&nbsp; {away_team} Under 1.5: <span style="color:#a0e8a0">{away_under15}%</span></div>
+  <div style="font-size:10px;color:#8b98a8;margin-top:8px">last 5 (old→new): {home_team} {home_hist} &nbsp;|&nbsp; {away_team} {away_hist}</div>
 </div>"""
 
 def build_legs(all_predictions):
-    """One Under 2.5 leg and one Under 3.5 leg per match, for the Acca
-    Builder. Deliberately NOT filtered by the scanner thresholds — the
-    builder draws from the full pool so it has enough legs to actually
-    hit a target odds, same as Match IQ/Euro Ice's Safest Bet Builder."""
+    """One Under 2.5 leg and one Under 3.5 leg per MATCH, plus one Under
+    1.5 leg per TEAM, for the Acca Builder. Deliberately NOT filtered by
+    the scanner thresholds — the builder draws from the full pool so it
+    has enough legs to actually hit a target odds, same as Match IQ/Euro
+    Ice's Safest Bet Builder.
+
+    Team legs are subject-keyed by TEAM NAME (not match), so the 1-per-
+    subject cap in the builder JS lets a team's own Under 1.5 leg and
+    that same match's Under 2.5/3.5 leg coexist — they're correlated,
+    just less strongly than match Under 2.5 vs Under 3.5 (which share
+    the exact same underlying total). Worth knowing if you're eyeballing
+    a built acca: a team-goals leg and its own match's goals leg are
+    still pulling from overlapping information, not fully independent."""
     legs = []
     for p in all_predictions:
         match_label = f"{p['home_team']} vs {p['away_team']}"
@@ -365,6 +393,21 @@ def build_legs(all_predictions):
                 "prob": prob,
                 "category": market_label,
                 "detail": f"exp total {p['exp_total']} goals",
+                "league": p["league"],
+            })
+
+        for team_key, team_name, exp_key in [("home_under15", p["home_team"], "exp_home"),
+                                              ("away_under15", p["away_team"], "exp_away")]:
+            prob = p[team_key]
+            if prob <= 0:
+                continue
+            legs.append({
+                "match": match_label,
+                "subject": team_name,  # capped at 1 leg per TEAM
+                "market": f"{team_name} Under 1.5 Goals",
+                "prob": prob,
+                "category": "Team Under 1.5 Goals",
+                "detail": f"{team_name} exp {p[exp_key]} goals",
                 "league": p["league"],
             })
     return legs
@@ -628,10 +671,14 @@ def render_main_cards(predictions):
         return '<p style="text-align:center;color:#888">No fixtures found in the current window.</p>'
     cards = ""
     for p in predictions:
+        home_hist = "/".join(str(v) for v in p["home_form"]["goals_list"]) or "—"
+        away_hist = "/".join(str(v) for v in p["away_form"]["goals_list"]) or "—"
         cards += CARD_TEMPLATE.format(
             league=p["league"], time=p["date"][:16].replace("T", " "),
             home_team=p["home_team"], away_team=p["away_team"],
             exp_total=p["exp_total"], under25=p["under25"], under35=p["under35"],
+            home_under15=p["home_under15"], away_under15=p["away_under15"],
+            home_hist=home_hist, away_hist=away_hist,
         )
     return cards
 
