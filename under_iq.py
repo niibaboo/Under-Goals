@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+w#!/usr/bin/env python3
 """
 Under IQ — built on TheStatsAPI (api.thestatsapi.com)
 
