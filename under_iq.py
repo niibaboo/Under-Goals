@@ -1,4 +1,4 @@
-w#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Under IQ — built on TheStatsAPI (api.thestatsapi.com)
 
@@ -332,6 +332,8 @@ def build_all_predictions(key):
 
             proj = predict_goals(h_form, a_form, lg_scored, lg_conceded)
             merged = {
+                "match_id": m["id"],  # needed later to look up the real final
+                                        # result for the results tracker
                 "league": comp["name"], "date": m["utc_date"], "date_key": m["utc_date"][:10],
                 "home_team": m["home_team"]["name"], "away_team": m["away_team"]["name"],
                 "home_form": h_form, "away_form": a_form,
@@ -418,7 +420,8 @@ HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <body style="background:#0b0f14;color:white;font-family:Arial;padding:12px;max-width:600px;margin:auto">
 <h2 style="text-align:center;margin-bottom:2px">📉 Under IQ — Full Stats</h2>
 <p style="text-align:center;color:#888;font-size:11px;margin-top:0">Powered by TheStatsAPI · {generated}</p>
-<p style="text-align:center;margin:6px 0 0;font-size:12px">Daily Signals: <a href="scanners/under25/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 2.5</a>·<a href="scanners/under35/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 3.5</a></p>
+<p style="text-align:center;margin:6px 0 0;font-size:12px">Daily Signals: <a href="scanners/under25/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 2.5</a>·<a href="scanners/under35/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 3.5</a>·<a href="scanners/cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Cold Form/Streak</a></p>
+<p style="text-align:center;margin:4px 0 0;font-size:12px"><a href="results/index.html" style="color:#f59e0b;text-decoration:none">📊 Results Tracker</a></p>
 <p style="text-align:center;margin:12px 0 4px"><a href="under_iq_predictions.csv" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Download CSV</a></p>
 
 <div id="builderPanel" style="background:#121820;border:1px solid #233040;border-radius:12px;padding:16px;margin:14px 0">
@@ -561,7 +564,7 @@ SCANNER_HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <p style="text-align:center;margin-bottom:6px"><a href="../../under_iq_index.html" style="color:#7ec8ff;text-decoration:none;font-size:12px">← Under IQ</a></p>
 <h2 style="text-align:center;margin-bottom:2px">{icon} {page_title}</h2>
 <p style="text-align:center;color:#888;font-size:11px;margin-top:0">{subtitle} · {generated}</p>
-<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 2.5</a>·<a href="../under35/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 3.5</a></p>
+<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 2.5</a>·<a href="../under35/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 3.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
 {date_bar}
 <p style="text-align:center;margin:8px 0 4px"><a href="{csv_name}" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Export CSV</a></p>
 <p style="text-align:center;color:#888;font-size:12px;margin-bottom:14px">{qualified_count} matches qualified</p>
@@ -665,6 +668,242 @@ def build_daily_signals_scanners(all_predictions, base_dir="docs/under-iq/scanne
         write_scanner_csv(qualified, f"{out_dir}/{cfg['dir']}_predictions.csv")
         print(f"  {cfg['title']}: {len(qualified)} fixtures across {len(date_keys)} date(s)")
 
+    build_cold_streak_scanner(all_predictions, base_dir)
+
+
+# --- Cold Form / Real Cold Streak --------------------------------------
+# Same distinction as Match IQ/Euro Ice/Strike Zone's Hot Form vs Real
+# Streak, inverted for Under IQ's whole thesis: teams genuinely
+# UNDER-scoring, not over. "Cold Form" is an AVERAGE over the last 5
+# games -- a team can qualify even if their most recent game was a
+# blowout, as long as earlier games pulled the average down low enough.
+# That's not what "streak" means (see the Match IQ Goal Streak fix this
+# session), so "Real Cold Streak" is a separate, stricter check: walking
+# backward from the most recent game and counting how many in a ROW
+# stayed at or under a per-game threshold, stopping at the first game
+# that broke it.
+COLD_FORM_MAX = 1.0
+COLD_FORM_MIN_GAMES = 5
+REAL_COLD_STREAK_THRESHOLD = 1   # per-game goals AT OR BELOW this extends the cold streak
+REAL_COLD_STREAK_MIN_LENGTH = 3  # shortest run that counts as "a streak"
+
+
+def _last5_goal_avg_cold(form):
+    """goals_list is oldest-first (see get_team_form) -- the LAST 5
+    entries are the most recent 5 games. Returns None with fewer than
+    5 games available."""
+    gl = form.get("goals_list") or []
+    if len(gl) < COLD_FORM_MIN_GAMES:
+        return None
+    last5 = gl[-COLD_FORM_MIN_GAMES:]
+    return round(sum(last5) / len(last5), 2), last5
+
+
+def _current_cold_streak(goals_list, threshold=REAL_COLD_STREAK_THRESHOLD):
+    """oldest-first -- walk in REVERSE to go from the most recent game
+    backward, exactly what a real streak needs."""
+    streak = 0
+    for g in reversed(goals_list):
+        if g <= threshold:
+            streak += 1
+        else:
+            break
+    return streak
+
+
+def build_cold_form_entries(all_predictions):
+    """COLD FORM -- one entry per TEAM whose last 5 games average
+    <= COLD_FORM_MAX goals scored."""
+    entries = []
+    for p in all_predictions:
+        for team_key, opp_key, form_key, is_home in [
+            ("home_team", "away_team", "home_form", True),
+            ("away_team", "home_team", "away_form", False),
+        ]:
+            result = _last5_goal_avg_cold(p[form_key])
+            if not result:
+                continue
+            avg5, last5 = result
+            if avg5 <= COLD_FORM_MAX:
+                entries.append({
+                    "team": p[team_key], "opponent": p[opp_key], "is_home": is_home,
+                    "league": p["league"], "date": p["date"], "date_key": p["date_key"],
+                    "last5_avg": avg5, "last5_goals": last5,
+                })
+    entries.sort(key=lambda e: (e["date_key"], e["last5_avg"]))  # coldest (lowest) first
+    return entries
+
+
+def build_real_cold_streak_entries(all_predictions):
+    """REAL COLD STREAK -- one entry per TEAM currently on a genuine
+    CONSECUTIVE run of >= REAL_COLD_STREAK_MIN_LENGTH games scoring
+    <= REAL_COLD_STREAK_THRESHOLD goals each, with no break."""
+    entries = []
+    for p in all_predictions:
+        for team_key, opp_key, form_key, is_home in [
+            ("home_team", "away_team", "home_form", True),
+            ("away_team", "home_team", "away_form", False),
+        ]:
+            form = p[form_key]
+            gl = form.get("goals_list") or []
+            streak_len = _current_cold_streak(gl)
+            if streak_len >= REAL_COLD_STREAK_MIN_LENGTH:
+                entries.append({
+                    "team": p[team_key], "opponent": p[opp_key], "is_home": is_home,
+                    "league": p["league"], "date": p["date"], "date_key": p["date_key"],
+                    "streak_len": streak_len, "streak_games": gl[-streak_len:],
+                    "full_sample": streak_len >= len(gl),
+                })
+    entries.sort(key=lambda e: (e["date_key"], -e["streak_len"]))
+    return entries
+
+
+COLD_STREAK_CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038;display:flex;gap:12px;align-items:flex-start">
+  <div style="min-width:72px;text-align:center;background:#0f1318;border:1px solid #2a3038;border-radius:10px;padding:8px 6px;flex-shrink:0">
+    <div style="font-size:10px;color:#888">L5 AVG</div>
+    <div style="font-size:20px;font-weight:bold;color:#7ec8ff">{last5_avg}</div>
+  </div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:11px;color:#999">{league} · {time}</div>
+    <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{team} <span style="color:#8b98a8;font-weight:normal;font-size:12px">({home_away})</span> vs {opponent}</div>
+    <div style="font-size:10px;color:#8b98a8">last 5 (old→new): {last5_str}</div>
+  </div>
+</div>"""
+
+REAL_COLD_STREAK_CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038;display:flex;gap:12px;align-items:flex-start">
+  <div style="min-width:72px;text-align:center;background:#0f1318;border:1px solid #7ec8ff;border-radius:10px;padding:8px 6px;flex-shrink:0">
+    <div style="font-size:10px;color:#888">STREAK</div>
+    <div style="font-size:20px;font-weight:bold;color:#7ec8ff">{streak_len}{plus}</div>
+  </div>
+  <div style="flex:1;min-width:0">
+    <div style="font-size:11px;color:#999">{league} · {time}</div>
+    <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{team} <span style="color:#8b98a8;font-weight:normal;font-size:12px">({home_away})</span> vs {opponent}</div>
+    <div style="font-size:10px;color:#8b98a8">{streak_len} straight game{s} ≤{threshold} (old→new): {streak_str}</div>
+  </div>
+</div>"""
+
+COLD_STREAK_HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Cold Form &amp; Streaks — Under IQ</title></head>
+<body style="background:#0b0f14;color:white;font-family:Arial;padding:12px;max-width:600px;margin:auto">
+<p style="text-align:center;margin-bottom:6px"><a href="../../under_iq_index.html" style="color:#7ec8ff;text-decoration:none;font-size:12px">← Under IQ</a></p>
+<h2 style="text-align:center;margin-bottom:2px">🧊 Cold Form &amp; Streaks</h2>
+<p style="text-align:center;color:#888;font-size:11px;margin-top:0">{generated}</p>
+<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 2.5</a>·<a href="../under35/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 3.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
+{date_bar}
+<p style="text-align:center;margin:8px 0 4px"><a href="{csv_name}" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Export CSV</a></p>
+
+<h3 style="margin:18px 0 2px;font-size:15px">📊 Cold Form <span style="color:#8b98a8;font-weight:normal;font-size:11px">(avg ≤{max_avg} over last {min_games} games — most recent game may not itself have been cold)</span></h3>
+<p style="text-align:center;color:#888;font-size:12px;margin:2px 0 10px">{cold_form_count} team(s)</p>
+{cold_form_cards}
+
+<h3 style="margin:22px 0 2px;font-size:15px">🧊 Real Cold Streak <span style="color:#8b98a8;font-weight:normal;font-size:11px">(≥{min_streak}+ CONSECUTIVE games ≤{streak_threshold}, no break)</span></h3>
+<p style="text-align:center;color:#888;font-size:12px;margin:2px 0 10px">{streak_count} team(s)</p>
+{streak_cards}
+
+<div style="font-size:11px;color:#8b98a8;text-align:center;margin-top:20px;line-height:1.6">
+  Both sections are raw recent-FORM screens, not probabilistic predictions like the Under
+  2.5/3.5 scanners. Cold Form and Real Cold Streak measure genuinely different things — a
+  team can appear in one, both, or neither. Cross-check against that team's Under 2.5/3.5
+  probability for their specific upcoming matchup before treating either alone as a signal.
+</div>
+</body></html>"""
+
+
+def render_cold_form_cards(entries):
+    if not entries:
+        return '<p style="text-align:center;color:#888">No teams currently qualify.</p>'
+    cards = ""
+    for e in entries:
+        cards += COLD_STREAK_CARD_TEMPLATE.format(
+            last5_avg=e["last5_avg"], league=e["league"], time=e["date"][:16].replace("T", " "),
+            team=e["team"], home_away="Home" if e["is_home"] else "Away", opponent=e["opponent"],
+            last5_str="/".join(str(v) for v in e["last5_goals"]),  # already oldest-first
+        )
+    return cards
+
+
+def render_real_cold_streak_cards(entries):
+    if not entries:
+        return '<p style="text-align:center;color:#888">No teams currently on a qualifying cold streak.</p>'
+    cards = ""
+    for e in entries:
+        cards += REAL_COLD_STREAK_CARD_TEMPLATE.format(
+            streak_len=e["streak_len"], plus="+" if e["full_sample"] else "",
+            league=e["league"], time=e["date"][:16].replace("T", " "),
+            team=e["team"], home_away="Home" if e["is_home"] else "Away", opponent=e["opponent"],
+            s="" if e["streak_len"] == 1 else "s", threshold=REAL_COLD_STREAK_THRESHOLD,
+            streak_str="/".join(str(v) for v in e["streak_games"]),
+        )
+    return cards
+
+
+def make_cold_streak_html(cold_form_entries, streak_entries, date_label=None, prev_href=None, next_href=None):
+    prev_link = f'<a href="{prev_href}" style="color:#7ec8ff;text-decoration:none;font-size:20px">◀</a>' if prev_href else '<span style="color:#444;font-size:20px">◀</span>'
+    next_link = f'<a href="{next_href}" style="color:#7ec8ff;text-decoration:none;font-size:20px">▶</a>' if next_href else '<span style="color:#444;font-size:20px">▶</span>'
+    date_bar = f"""
+<div style="display:flex;align-items:center;justify-content:center;gap:20px;margin:10px 0 4px">
+  {prev_link}
+  <span style="font-size:15px;font-weight:bold">{date_label or ''}</span>
+  {next_link}
+</div>""" if date_label else ""
+
+    return COLD_STREAK_HTML_TEMPLATE.format(
+        max_avg=COLD_FORM_MAX, min_games=COLD_FORM_MIN_GAMES,
+        min_streak=REAL_COLD_STREAK_MIN_LENGTH, streak_threshold=REAL_COLD_STREAK_THRESHOLD,
+        generated=datetime.now().strftime("%d %b %H:%M"),
+        date_bar=date_bar, csv_name="cold_streak_predictions.csv",
+        cold_form_count=len(cold_form_entries), cold_form_cards=render_cold_form_cards(cold_form_entries),
+        streak_count=len(streak_entries), streak_cards=render_real_cold_streak_cards(streak_entries),
+    )
+
+
+def write_cold_streak_csv(cold_form_entries, streak_entries, path):
+    with open(path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Type", "Date", "League", "Team", "HomeAway", "Opponent", "Value", "Games"])
+        for e in cold_form_entries:
+            writer.writerow(["Cold Form (avg)", e["date"], e["league"], e["team"],
+                              "Home" if e["is_home"] else "Away", e["opponent"],
+                              e["last5_avg"], "/".join(str(v) for v in e["last5_goals"])])
+        for e in streak_entries:
+            writer.writerow(["Real Cold Streak (consecutive)", e["date"], e["league"], e["team"],
+                              "Home" if e["is_home"] else "Away", e["opponent"],
+                              e["streak_len"], "/".join(str(v) for v in e["streak_games"])])
+
+
+def build_cold_streak_scanner(all_predictions, base_dir="docs/under-iq/scanners"):
+    cold_form_entries = build_cold_form_entries(all_predictions)
+    streak_entries = build_real_cold_streak_entries(all_predictions)
+    out_dir = f"{base_dir}/cold_streak"
+    os.makedirs(out_dir, exist_ok=True)
+
+    cold_form_by_date = group_by_date(cold_form_entries)
+    streak_by_date = group_by_date(streak_entries)
+    date_keys = sorted(set(cold_form_by_date.keys()) | set(streak_by_date.keys()))
+
+    if not date_keys:
+        with open(f"{out_dir}/index.html", "w") as f:
+            f.write(make_cold_streak_html([], []))
+    else:
+        for i, date_key in enumerate(date_keys):
+            prev_href = date_page_filename(date_keys[i - 1]) if i > 0 else None
+            next_href = date_page_filename(date_keys[i + 1]) if i < len(date_keys) - 1 else None
+            page_html = make_cold_streak_html(
+                cold_form_by_date.get(date_key, []), streak_by_date.get(date_key, []),
+                date_label=format_date_label(date_key),
+                prev_href=prev_href, next_href=next_href,
+            )
+            with open(f"{out_dir}/{date_page_filename(date_key)}", "w") as f:
+                f.write(page_html)
+        with open(f"{out_dir}/{date_page_filename(date_keys[0])}") as f:
+            soonest_html = f.read()
+        with open(f"{out_dir}/index.html", "w") as f:
+            f.write(soonest_html)
+
+    write_cold_streak_csv(cold_form_entries, streak_entries, f"{out_dir}/cold_streak_predictions.csv")
+    print(f"  Cold Form: {len(cold_form_entries)} team-entries · Real Cold Streak: {len(streak_entries)} "
+          f"team-entries across {len(date_keys)} date(s)")
+
 
 def render_main_cards(predictions):
     if not predictions:
@@ -709,5 +948,23 @@ if __name__ == "__main__":
 
     print("\nBuilding Daily Signals scanners...")
     build_daily_signals_scanners(all_predictions)
+
+    try:
+        import results_tracker
+        results_tracker.run_results_tracker(
+            all_predictions,
+            build_cold_form_entries(all_predictions),
+            build_real_cold_streak_entries(all_predictions),
+            api_key,
+            thresholds={
+                "under25_min": SCANNER_UNDER25_MIN, "under35_min": SCANNER_UNDER35_MIN,
+                "real_cold_streak_threshold": REAL_COLD_STREAK_THRESHOLD,
+            },
+        )
+    except Exception as e:
+        # Results tracking sits on top of everything above, which has
+        # already succeeded by this point -- a failure here should
+        # never take down an otherwise-successful run.
+        print(f"\n[!] Results tracker failed, but the rest of this run succeeded: {e}")
 
     print(f"\nDone — {len(all_predictions)} total fixtures projected.")
