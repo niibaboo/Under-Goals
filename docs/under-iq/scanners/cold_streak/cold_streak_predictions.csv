@@ -1,1 +1,27 @@
 Type,Date,League,Team,HomeAway,Opponent,Value,Games
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Away,Sochaux,0.6,1/0/1/0/1
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,USL Dunkerque,Home,Annecy FC,0.6,0/0/1/2/0
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,Sochaux,Home,US Boulogne Côte-d'Opale,0.8,1/0/1/1/1
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,Montpellier,Home,Grenoble Foot 38,0.8,1/0/1/1/1
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,Pau FC,Home,Stade Lavallois,1.0,0/2/1/0/2
+Cold Form (avg),2026-10-09T18:00:00.000Z,Ligue 2,Stade Lavallois,Away,Pau FC,1.0,1/0/1/2/1
+Cold Form (avg),2026-10-09T18:30:00.000Z,Serie B,Sampdoria,Away,Avellino,1.0,1/1/1/0/2
+Cold Form (avg),2026-10-10T12:00:00.000Z,Ligue 2,Clermont Foot,Home,Red Star FC,0.6,1/0/1/0/1
+Cold Form (avg),2026-10-10T13:00:00.000Z,Serie A,Genoa,Home,Fiorentina,0.6,0/0/1/1/1
+Cold Form (avg),2026-10-10T16:30:00.000Z,Stoiximan Super League,Asteras Aktor,Home,Atromitos Athens,0.8,1/0/0/1/2
+Cold Form (avg),2026-10-10T16:30:00.000Z,Stoiximan Super League,Atromitos Athens,Away,Asteras Aktor,0.8,0/1/1/1/1
+Cold Form (avg),2026-10-10T13:00:00.000Z,Serie B,Juve Stabia,Away,Virtus Entella,0.8,0/2/0/1/1
+Cold Form (avg),2026-10-10T13:00:00.000Z,Serie B,Empoli,Home,Palermo,0.8,1/1/1/0/1
+Cold Form (avg),2026-10-10T16:00:00.000Z,Serie A,Parma,Away,Inter,0.8,0/0/1/1/2
+Cold Form (avg),2026-10-10T17:30:00.000Z,Serie B,Cremonese,Away,Arezzo,1.0,0/0/3/2/0
+Real Cold Streak (consecutive),2026-10-09T18:00:00.000Z,Ligue 2,Sochaux,Home,US Boulogne Côte-d'Opale,7,0/0/1/0/1/1/1
+Real Cold Streak (consecutive),2026-10-09T18:00:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Away,Sochaux,7,0/0/1/0/1/0/1
+Real Cold Streak (consecutive),2026-10-09T18:00:00.000Z,Ligue 2,Montpellier,Home,Grenoble Foot 38,7,1/1/1/0/1/1/1
+Real Cold Streak (consecutive),2026-10-09T18:00:00.000Z,Ligue 2,Grenoble Foot 38,Away,Montpellier,3,1/1/1
+Real Cold Streak (consecutive),2026-10-09T18:30:00.000Z,Serie B,Avellino,Home,Sampdoria,3,1/1/1
+Real Cold Streak (consecutive),2026-10-10T12:00:00.000Z,Ligue 2,Clermont Foot,Home,Red Star FC,7,0/1/1/0/1/0/1
+Real Cold Streak (consecutive),2026-10-10T16:30:00.000Z,Stoiximan Super League,Atromitos Athens,Away,Asteras Aktor,5,0/1/1/1/1
+Real Cold Streak (consecutive),2026-10-10T13:00:00.000Z,Serie B,Empoli,Home,Palermo,5,1/1/1/0/1
+Real Cold Streak (consecutive),2026-10-10T13:00:00.000Z,Serie A,Genoa,Home,Fiorentina,5,0/0/1/1/1
+Real Cold Streak (consecutive),2026-10-10T13:00:00.000Z,Serie B,Juve Stabia,Away,Virtus Entella,3,0/1/1
+Real Cold Streak (consecutive),2026-10-10T17:30:00.000Z,Serie B,Arezzo,Home,Cremonese,3,0/1/1
