@@ -62,8 +62,13 @@ FIXTURE_WINDOW_DAYS = 10
 # In leagues averaging ~2.5 goals/match, Under 3.5 is often true anyway
 # (low signal value on its own), so it's set high to only surface matches
 # where the model is genuinely confident, not just "usually true here".
-SCANNER_UNDER25_MIN = 60
-SCANNER_UNDER35_MIN = 80
+#
+# TIGHTENED (user request: "tighten the under model" -> raise the
+# confidence bars, same move as the Euro Ice Hot Form/Real Streak
+# threshold raise): 60/80 -> 65/85. Fewer matches will qualify for each
+# scanner, but the ones that do clear a meaningfully higher bar.
+SCANNER_UNDER25_MIN = 65
+SCANNER_UNDER35_MIN = 85
 
 # Verified via check_league_coverage.py-style research against real season
 # data (goals/match across 2024-25 and 2025-26 seasons) before being added —
@@ -682,10 +687,20 @@ def build_daily_signals_scanners(all_predictions, base_dir="docs/under-iq/scanne
 # backward from the most recent game and counting how many in a ROW
 # stayed at or under a per-game threshold, stopping at the first game
 # that broke it.
-COLD_FORM_MAX = 1.0
+#
+# TIGHTENED (user request: "tighten the under model" -> raise the
+# confidence bars): COLD_FORM_MAX 1.0 -> 0.8, so a team now needs a
+# genuinely low-scoring last-5 average to qualify, not just "below one
+# goal a game on average". REAL_COLD_STREAK_MIN_LENGTH 3 -> 4, requiring
+# one more consecutive cold game before a streak counts.
+# REAL_COLD_STREAK_THRESHOLD stays at 1 -- tightening it to 0 would mean
+# "only an outright shutout keeps the streak alive", which is too strict
+# to realistically find a run of 4+ in most leagues; the extra length
+# requirement does the tightening instead.
+COLD_FORM_MAX = 0.8
 COLD_FORM_MIN_GAMES = 5
 REAL_COLD_STREAK_THRESHOLD = 1   # per-game goals AT OR BELOW this extends the cold streak
-REAL_COLD_STREAK_MIN_LENGTH = 3  # shortest run that counts as "a streak"
+REAL_COLD_STREAK_MIN_LENGTH = 4  # shortest run that counts as "a streak"
 
 
 def _last5_goal_avg_cold(form):
