@@ -7,6 +7,21 @@ shrinkage toward league average, opponent-adjusted Poisson probability),
 but scoped specifically to UNDER GOALS markets across leagues chosen for
 being genuinely low-scoring, rather than Match IQ's high-scoring set.
 
+PER-TEAM UNDER GOALS, NOT MATCH-TOTAL UNDER (pivoted from the original
+match-total design -- user feedback, with screenshots of the exact
+failure mode: Pau 3-2 Laval and Avellino 4-1 Sampdoria both missed
+Under 3.5 on the match total, even though the LOSING side in each
+(Laval, Sampdoria) individually stayed low-scoring). A match-total Under
+bet can be wrecked by the OPPONENT having a big game -- the team you
+actually had a read on can do exactly what you expected and the bet
+still loses, because the total is one number built from two mostly-
+independent scoring processes. Pricing each team's OWN goals separately
+isolates the signal to the team the form data is actually about, instead
+of exposing it to the other side's variance too. The daily scanners
+below are now Team Under 1.5 and Team Under 2.5 (one entry per TEAM per
+match, not one entry per match) -- match-total Under 2.5/Under 3.5
+scanners have been removed entirely.
+
 WHY A SEPARATE PROJECT, NOT A MATCH IQ MARKET:
 Match IQ's league list was deliberately chosen for high scoring (Bundesliga,
 Eredivisie, Danish Superliga, Eliteserien — all ~3.0+ goals/match). Running
@@ -40,8 +55,9 @@ Setup:
 Output:
     docs/under-iq/under_iq_index.html
     docs/under-iq/under_iq_predictions.csv
-    docs/under-iq/scanners/under25/  (date-paginated, CSV export)
-    docs/under-iq/scanners/under35/  (date-paginated, CSV export)
+    docs/under-iq/scanners/team_under15/  (date-paginated, CSV export)
+    docs/under-iq/scanners/team_under25/  (date-paginated, CSV export)
+    docs/under-iq/scanners/cold_streak/   (date-paginated, CSV export)
 """
 
 import os
@@ -58,17 +74,15 @@ RECENT_GAMES = 7
 PRIOR_STRENGTH = 3
 FIXTURE_WINDOW_DAYS = 10
 
-# Thresholds — Under 3.5 is deliberately a much higher bar than Under 2.5.
-# In leagues averaging ~2.5 goals/match, Under 3.5 is often true anyway
-# (low signal value on its own), so it's set high to only surface matches
-# where the model is genuinely confident, not just "usually true here".
-#
-# TIGHTENED (user request: "tighten the under model" -> raise the
-# confidence bars, same move as the Euro Ice Hot Form/Real Streak
-# threshold raise): 60/80 -> 65/85. Fewer matches will qualify for each
-# scanner, but the ones that do clear a meaningfully higher bar.
-SCANNER_UNDER25_MIN = 65
-SCANNER_UNDER35_MIN = 85
+# TEAM-LEVEL Under goals thresholds — each team's OWN expected goals,
+# not the match total (see module docstring for why). Team Under 2.5 is
+# deliberately a much higher bar than Team Under 1.5: in these low-
+# scoring leagues a team's own Under 2.5 is often true anyway (a team
+# scoring 3+ in one match is the exception, not the rule), so it's set
+# high to only surface teams the model is genuinely confident about, not
+# just "usually true for this team".
+TEAM_UNDER15_MIN = 70
+TEAM_UNDER25_MIN = 90
 
 # Verified via check_league_coverage.py-style research against real season
 # data (goals/match across 2024-25 and 2025-26 seasons) before being added —
@@ -263,7 +277,17 @@ def shrink(value, n, league_avg, prior=PRIOR_STRENGTH):
 def predict_goals(h_form, a_form, lg_scored, lg_conceded):
     """Same opponent-adjusted approach as Match IQ's predict_goals —
     each side's own scoring rate weighed against the OTHER side's
-    conceding rate, not just a flat average."""
+    conceding rate, not just a flat average.
+
+    exp_total is still computed and kept in the output for reference
+    display on the main page (useful context for how high-scoring a
+    fixture looks overall), but it no longer drives a market of its own
+    -- match-total Under 2.5/Under 3.5 probabilities have been removed.
+    Every actual signal below is PER TEAM: Under 1.5 (team scores 0 or 1
+    -- the natural tight line here, where a team's own expected goals
+    often sits right around 1.0-1.5) and Under 2.5 (team scores 0, 1 or
+    2 -- a looser line, naturally higher probability, for when 1.5 is
+    too strict to find enough picks)."""
     h_scored = shrink(h_form["avg_scored"], h_form["n_games"], lg_scored)
     h_conceded = shrink(h_form["avg_conceded"], h_form["n_games"], lg_conceded)
     a_scored = shrink(a_form["avg_scored"], a_form["n_games"], lg_scored)
@@ -273,20 +297,15 @@ def predict_goals(h_form, a_form, lg_scored, lg_conceded):
     exp_away = round(a_scored * (h_conceded / lg_conceded), 2)
     exp_total = round(exp_home + exp_away, 2)
 
-    p_under25 = poisson_cdf(2, exp_total)   # total <= 2, i.e. Under 2.5
-    p_under35 = poisson_cdf(3, exp_total)   # total <= 3, i.e. Under 3.5
-
-    # Per-TEAM under-goals — each side's OWN goals, not the match total.
-    # Under 1.5 (team scores 0 or 1) is the natural line for these
-    # low-scoring leagues, where a team's own expected goals often sits
-    # right around 1.0-1.5 anyway.
     p_home_under15 = poisson_cdf(1, exp_home)
     p_away_under15 = poisson_cdf(1, exp_away)
+    p_home_under25 = poisson_cdf(2, exp_home)
+    p_away_under25 = poisson_cdf(2, exp_away)
 
     return {
         "exp_home": exp_home, "exp_away": exp_away, "exp_total": exp_total,
-        "under25": round(p_under25 * 100), "under35": round(p_under35 * 100),
         "home_under15": round(p_home_under15 * 100), "away_under15": round(p_away_under15 * 100),
+        "home_under25": round(p_home_under25 * 100), "away_under25": round(p_away_under25 * 100),
     }
 
 
@@ -353,70 +372,63 @@ def build_all_predictions(key):
 def write_csv(predictions, path):
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["Date", "League", "HomeTeam", "AwayTeam", "ExpTotal", "Under25", "Under35",
-                          "HomeUnder15", "AwayUnder15"])
+        writer.writerow(["Date", "League", "HomeTeam", "AwayTeam", "ExpTotal",
+                          "HomeExpGoals", "HomeUnder15", "HomeUnder25",
+                          "AwayExpGoals", "AwayUnder15", "AwayUnder25"])
         for p in predictions:
-            writer.writerow([p["date"], p["league"], p["home_team"], p["away_team"],
-                              p["exp_total"], p["under25"], p["under35"],
-                              p["home_under15"], p["away_under15"]])
+            writer.writerow([p["date"], p["league"], p["home_team"], p["away_team"], p["exp_total"],
+                              p["exp_home"], p["home_under15"], p["home_under25"],
+                              p["exp_away"], p["away_under15"], p["away_under25"]])
 
 
 CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038">
   <div style="font-size:11px;color:#999">{league} · {time}</div>
   <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{home_team} vs {away_team}</div>
-  <div style="font-size:11px;color:#aaa">Exp Total: <span style="color:#a0e8a0">{exp_total}</span> &nbsp;|&nbsp; Under 2.5: <span style="color:#a0e8a0">{under25}%</span> &nbsp;|&nbsp; Under 3.5: <span style="color:#a0e8a0">{under35}%</span></div>
-  <div style="font-size:11px;color:#aaa;margin-top:6px">{home_team} Under 1.5: <span style="color:#a0e8a0">{home_under15}%</span> &nbsp;|&nbsp; {away_team} Under 1.5: <span style="color:#a0e8a0">{away_under15}%</span></div>
+  <div style="font-size:11px;color:#777">Exp Total: {exp_total} <span style="color:#555">(context only — not a market; see Team Under scanners below for the actual signals)</span></div>
+  <div style="font-size:11px;color:#aaa;margin-top:6px">{home_team} (exp {exp_home}) — Under 1.5: <span style="color:#a0e8a0">{home_under15}%</span> &nbsp;|&nbsp; Under 2.5: <span style="color:#a0e8a0">{home_under25}%</span></div>
+  <div style="font-size:11px;color:#aaa">{away_team} (exp {exp_away}) — Under 1.5: <span style="color:#a0e8a0">{away_under15}%</span> &nbsp;|&nbsp; Under 2.5: <span style="color:#a0e8a0">{away_under25}%</span></div>
   <div style="font-size:10px;color:#8b98a8;margin-top:8px">last 5 (old→new): {home_team} {home_hist} &nbsp;|&nbsp; {away_team} {away_hist}</div>
 </div>"""
 
 def build_legs(all_predictions):
-    """One Under 2.5 leg and one Under 3.5 leg per MATCH, plus one Under
-    1.5 leg per TEAM, for the Acca Builder. Deliberately NOT filtered by
-    the scanner thresholds — the builder draws from the full pool so it
-    has enough legs to actually hit a target odds, same as Match IQ/Euro
-    Ice's Safest Bet Builder.
+    """One Under 1.5 leg and one Under 2.5 leg per TEAM, for the Acca
+    Builder. Deliberately NOT filtered by the scanner thresholds — the
+    builder draws from the full pool so it has enough legs to actually
+    hit a target odds, same as Match IQ/Euro Ice's Safest Bet Builder.
 
-    Team legs are subject-keyed by TEAM NAME (not match), so the 1-per-
-    subject cap in the builder JS lets a team's own Under 1.5 leg and
-    that same match's Under 2.5/3.5 leg coexist — they're correlated,
-    just less strongly than match Under 2.5 vs Under 3.5 (which share
-    the exact same underlying total). Worth knowing if you're eyeballing
-    a built acca: a team-goals leg and its own match's goals leg are
-    still pulling from overlapping information, not fully independent."""
+    Both legs for the same team share "subject" = team name, so the
+    1-per-subject cap in the builder JS treats them as the SAME
+    diversification slot — Under 1.5 and Under 2.5 for one team are the
+    same underlying scoring-rate read at two different bars, not two
+    independent signals, exactly the reasoning match Under 2.5/Under 3.5
+    shared a subject key under the old match-total model. A team's two
+    legs (home) and the opponent's two legs (away) from the same match
+    ARE allowed to coexist, since they're different teams' own scoring,
+    not the same number measured twice."""
     legs = []
     for p in all_predictions:
         match_label = f"{p['home_team']} vs {p['away_team']}"
-        for market_key, market_label in [("under25", "Under 2.5 Goals"), ("under35", "Under 3.5 Goals")]:
-            prob = p[market_key]
-            if prob <= 0:
-                continue
-            legs.append({
-                "match": match_label,
-                "subject": match_label,  # capped at 1 leg per MATCH below — see
-                                          # module docstring on why Under 2.5 and
-                                          # Under 3.5 on the same fixture aren't
-                                          # real diversification
-                "market": f"{match_label} {market_label}",
-                "prob": prob,
-                "category": market_label,
-                "detail": f"exp total {p['exp_total']} goals",
-                "league": p["league"],
-            })
-
-        for team_key, team_name, exp_key in [("home_under15", p["home_team"], "exp_home"),
-                                              ("away_under15", p["away_team"], "exp_away")]:
-            prob = p[team_key]
-            if prob <= 0:
-                continue
-            legs.append({
-                "match": match_label,
-                "subject": team_name,  # capped at 1 leg per TEAM
-                "market": f"{team_name} Under 1.5 Goals",
-                "prob": prob,
-                "category": "Team Under 1.5 Goals",
-                "detail": f"{team_name} exp {p[exp_key]} goals",
-                "league": p["league"],
-            })
+        for team_key, team_name, exp_key, under15_key, under25_key in [
+            ("home", p["home_team"], "exp_home", "home_under15", "home_under25"),
+            ("away", p["away_team"], "exp_away", "away_under15", "away_under25"),
+        ]:
+            exp_goals = p[exp_key]
+            for market_key, market_label, category in [
+                (under15_key, "Under 1.5 Goals", "Team Under 1.5 Goals"),
+                (under25_key, "Under 2.5 Goals", "Team Under 2.5 Goals"),
+            ]:
+                prob = p[market_key]
+                if prob <= 0:
+                    continue
+                legs.append({
+                    "match": match_label,
+                    "subject": team_name,  # capped at 1 leg per TEAM — see docstring
+                    "market": f"{team_name} {market_label}",
+                    "prob": prob,
+                    "category": category,
+                    "detail": f"{team_name} exp {exp_goals} goals",
+                    "league": p["league"],
+                })
     return legs
 
 
@@ -425,7 +437,7 @@ HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <body style="background:#0b0f14;color:white;font-family:Arial;padding:12px;max-width:600px;margin:auto">
 <h2 style="text-align:center;margin-bottom:2px">📉 Under IQ — Full Stats</h2>
 <p style="text-align:center;color:#888;font-size:11px;margin-top:0">Powered by TheStatsAPI · {generated}</p>
-<p style="text-align:center;margin:6px 0 0;font-size:12px">Daily Signals: <a href="scanners/under25/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 2.5</a>·<a href="scanners/under35/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Under 3.5</a>·<a href="scanners/cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Cold Form/Streak</a></p>
+<p style="text-align:center;margin:6px 0 0;font-size:12px">Daily Signals: <a href="scanners/team_under15/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Team Under 1.5</a>·<a href="scanners/team_under25/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Team Under 2.5</a>·<a href="scanners/cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 4px">Cold Form/Streak</a></p>
 <p style="text-align:center;margin:4px 0 0;font-size:12px"><a href="results/index.html" style="color:#f59e0b;text-decoration:none">📊 Results Tracker</a></p>
 <p style="text-align:center;margin:12px 0 4px"><a href="under_iq_predictions.csv" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Download CSV</a></p>
 
@@ -551,65 +563,88 @@ initToggles();
 </script>
 </body></html>"""
 
-SCANNER_CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038;display:flex;gap:12px;align-items:flex-start">
+# --- Team Under 1.5 / Team Under 2.5 scanners --------------------------
+# Flattens each match into up to two TEAM entries (home + away), each
+# carrying that team's OWN expected goals and Under 1.5/2.5 probabilities
+# -- replaces the old match-total Under 2.5/Under 3.5 scanners entirely
+# (see module docstring). A team's own goals_list (last 5, oldest->newest)
+# is carried through too so the scanner card can show it as context,
+# same as the old match card did for both sides.
+
+def build_team_under_entries(all_predictions):
+    entries = []
+    for p in all_predictions:
+        match_label = f"{p['home_team']} vs {p['away_team']}"
+        for team_key, team_name, opp_name, exp_key, under15_key, under25_key, form_key, is_home in [
+            ("home", p["home_team"], p["away_team"], "exp_home", "home_under15", "home_under25", "home_form", True),
+            ("away", p["away_team"], p["home_team"], "exp_away", "away_under15", "away_under25", "away_form", False),
+        ]:
+            entries.append({
+                "team": team_name, "opponent": opp_name, "is_home": is_home,
+                "match": match_label, "league": p["league"],
+                "date": p["date"], "date_key": p["date_key"],
+                "exp_goals": p[exp_key], "under15": p[under15_key], "under25": p[under25_key],
+                "goals_list": p[form_key].get("goals_list") or [],
+            })
+    return entries
+
+
+TEAM_SCANNER_CARD_TEMPLATE = """<div style="background:#1a1f26;border-radius:12px;padding:14px;margin:10px 0;border:1px solid #2a3038;display:flex;gap:12px;align-items:flex-start">
   <div style="min-width:72px;text-align:center;background:#0f1318;border:1px solid #2a3038;border-radius:10px;padding:8px 6px;flex-shrink:0">
     <div style="font-size:10px;color:#888">{badge_label}</div>
     <div style="font-size:20px;font-weight:bold;color:#a0e8a0">{badge_value}%</div>
   </div>
   <div style="flex:1;min-width:0">
     <div style="font-size:11px;color:#999">{league} · {time}</div>
-    <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{home_team} vs {away_team}</div>
-    <div style="font-size:11px;color:#aaa">Exp Total: <span style="color:#a0e8a0">{exp_total}</span> &nbsp;|&nbsp; Under 2.5: <span style="color:#a0e8a0">{under25}%</span> &nbsp;|&nbsp; Under 3.5: <span style="color:#a0e8a0">{under35}%</span></div>
+    <div style="font-size:15px;font-weight:bold;margin:2px 0 6px">{team} <span style="color:#8b98a8;font-weight:normal;font-size:12px">({home_away})</span> vs {opponent}</div>
+    <div style="font-size:11px;color:#aaa">Exp Goals: <span style="color:#a0e8a0">{exp_goals}</span></div>
+    <div style="font-size:10px;color:#8b98a8;margin-top:6px">last 5 (old→new): {hist}</div>
   </div>
 </div>"""
 
-SCANNER_HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
+TEAM_SCANNER_HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>{page_title} — Under IQ</title></head>
 <body style="background:#0b0f14;color:white;font-family:Arial;padding:12px;max-width:600px;margin:auto">
 <p style="text-align:center;margin-bottom:6px"><a href="../../under_iq_index.html" style="color:#7ec8ff;text-decoration:none;font-size:12px">← Under IQ</a></p>
 <h2 style="text-align:center;margin-bottom:2px">{icon} {page_title}</h2>
 <p style="text-align:center;color:#888;font-size:11px;margin-top:0">{subtitle} · {generated}</p>
-<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 2.5</a>·<a href="../under35/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 3.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
+<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../team_under15/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Team Under 1.5</a>·<a href="../team_under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Team Under 2.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
 {date_bar}
 <p style="text-align:center;margin:8px 0 4px"><a href="{csv_name}" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Export CSV</a></p>
-<p style="text-align:center;color:#888;font-size:12px;margin-bottom:14px">{qualified_count} matches qualified</p>
+<p style="text-align:center;color:#888;font-size:12px;margin-bottom:14px">{qualified_count} team-entries qualified</p>
 {cards}
 </body></html>"""
 
-SCANNER_CONFIGS = [
+TEAM_SCANNER_CONFIGS = [
     {
-        "dir": "under25", "market_key": "under25", "min": SCANNER_UNDER25_MIN,
-        "title": "Under 2.5 Goals Daily Scanner", "icon": "📉", "badge_label": "U2.5",
-        "subtitle_fmt": f"All matches with ≥{SCANNER_UNDER25_MIN}% Under 2.5 probability",
+        "dir": "team_under15", "market_key": "under15", "min": TEAM_UNDER15_MIN,
+        "title": "Team Under 1.5 Goals Daily Scanner", "icon": "📉", "badge_label": "U1.5",
+        "subtitle_fmt": f"All teams with ≥{TEAM_UNDER15_MIN}% probability of scoring 0 or 1 goals in their own match",
     },
     {
-        "dir": "under35", "market_key": "under35", "min": SCANNER_UNDER35_MIN,
-        "title": "Under 3.5 Goals Daily Scanner", "icon": "🔒", "badge_label": "U3.5",
-        "subtitle_fmt": f"All matches with ≥{SCANNER_UNDER35_MIN}% Under 3.5 probability",
+        "dir": "team_under25", "market_key": "under25", "min": TEAM_UNDER25_MIN,
+        "title": "Team Under 2.5 Goals Daily Scanner", "icon": "🔒", "badge_label": "U2.5",
+        "subtitle_fmt": f"All teams with ≥{TEAM_UNDER25_MIN}% probability of scoring 2 or fewer goals in their own match",
     },
 ]
 
 
-def _scanner_badge_value(p, market_key):
-    return p[market_key]
-
-
-def render_scanner_cards(predictions, market_key, badge_label):
-    if not predictions:
-        return '<p style="text-align:center;color:#888">No fixtures on this date qualified.</p>'
+def render_team_scanner_cards(entries, market_key, badge_label):
+    if not entries:
+        return '<p style="text-align:center;color:#888">No teams on this date qualified.</p>'
     cards = ""
-    for p in predictions:
-        cards += SCANNER_CARD_TEMPLATE.format(
-            badge_label=badge_label, badge_value=_scanner_badge_value(p, market_key),
-            league=p["league"], time=p["date"][:16].replace("T", " "),
-            home_team=p["home_team"], away_team=p["away_team"],
-            exp_total=p["exp_total"], under25=p["under25"], under35=p["under35"],
+    for e in entries:
+        cards += TEAM_SCANNER_CARD_TEMPLATE.format(
+            badge_label=badge_label, badge_value=e[market_key],
+            league=e["league"], time=e["date"][:16].replace("T", " "),
+            team=e["team"], home_away="Home" if e["is_home"] else "Away", opponent=e["opponent"],
+            exp_goals=e["exp_goals"], hist="/".join(str(v) for v in e["goals_list"]) or "—",
         )
     return cards
 
 
-def make_scanner_html(predictions, page_title, icon, subtitle, market_key, badge_label,
-                       csv_name, date_label=None, prev_href=None, next_href=None):
+def make_team_scanner_html(entries, page_title, icon, subtitle, market_key, badge_label,
+                            csv_name, date_label=None, prev_href=None, next_href=None):
     prev_link = f'<a href="{prev_href}" style="color:#7ec8ff;text-decoration:none;font-size:20px">◀</a>' if prev_href else '<span style="color:#444;font-size:20px">◀</span>'
     next_link = f'<a href="{next_href}" style="color:#7ec8ff;text-decoration:none;font-size:20px">▶</a>' if next_href else '<span style="color:#444;font-size:20px">▶</span>'
     date_bar = f"""
@@ -619,28 +654,31 @@ def make_scanner_html(predictions, page_title, icon, subtitle, market_key, badge
   {next_link}
 </div>""" if date_label else ""
 
-    return SCANNER_HTML_TEMPLATE.format(
+    return TEAM_SCANNER_HTML_TEMPLATE.format(
         page_title=page_title, icon=icon, subtitle=subtitle,
         generated=datetime.now().strftime("%d %b %H:%M"),
         date_bar=date_bar, csv_name=csv_name,
-        qualified_count=len(predictions),
-        cards=render_scanner_cards(predictions, market_key, badge_label),
+        qualified_count=len(entries),
+        cards=render_team_scanner_cards(entries, market_key, badge_label),
     )
 
 
-def write_scanner_csv(predictions, path):
+def write_team_scanner_csv(entries, path):
     with open(path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["Date", "League", "HomeTeam", "AwayTeam", "ExpTotal", "Under25", "Under35"])
-        for p in predictions:
-            writer.writerow([p["date"], p["league"], p["home_team"], p["away_team"],
-                              p["exp_total"], p["under25"], p["under35"]])
+        writer.writerow(["Date", "League", "Team", "HomeAway", "Opponent", "ExpGoals", "Under15", "Under25", "Last5Goals"])
+        for e in entries:
+            writer.writerow([e["date"], e["league"], e["team"], "Home" if e["is_home"] else "Away",
+                              e["opponent"], e["exp_goals"], e["under15"], e["under25"],
+                              "/".join(str(v) for v in e["goals_list"])])
 
 
 def build_daily_signals_scanners(all_predictions, base_dir="docs/under-iq/scanners"):
-    for cfg in SCANNER_CONFIGS:
-        qualified = [p for p in all_predictions if _scanner_badge_value(p, cfg["market_key"]) >= cfg["min"]]
-        qualified.sort(key=lambda p: (p["date_key"], -_scanner_badge_value(p, cfg["market_key"])))
+    team_entries = build_team_under_entries(all_predictions)
+
+    for cfg in TEAM_SCANNER_CONFIGS:
+        qualified = [e for e in team_entries if e[cfg["market_key"]] >= cfg["min"]]
+        qualified.sort(key=lambda e: (e["date_key"], -e[cfg["market_key"]]))
 
         out_dir = f"{base_dir}/{cfg['dir']}"
         os.makedirs(out_dir, exist_ok=True)
@@ -654,12 +692,12 @@ def build_daily_signals_scanners(all_predictions, base_dir="docs/under-iq/scanne
 
         if not date_keys:
             with open(f"{out_dir}/index.html", "w") as f:
-                f.write(make_scanner_html([], **common))
+                f.write(make_team_scanner_html([], **common))
         else:
             for i, date_key in enumerate(date_keys):
                 prev_href = date_page_filename(date_keys[i - 1]) if i > 0 else None
                 next_href = date_page_filename(date_keys[i + 1]) if i < len(date_keys) - 1 else None
-                page_html = make_scanner_html(
+                page_html = make_team_scanner_html(
                     by_date[date_key], date_label=format_date_label(date_key),
                     prev_href=prev_href, next_href=next_href, **common,
                 )
@@ -670,8 +708,8 @@ def build_daily_signals_scanners(all_predictions, base_dir="docs/under-iq/scanne
             with open(f"{out_dir}/index.html", "w") as f:
                 f.write(soonest_html)
 
-        write_scanner_csv(qualified, f"{out_dir}/{cfg['dir']}_predictions.csv")
-        print(f"  {cfg['title']}: {len(qualified)} fixtures across {len(date_keys)} date(s)")
+        write_team_scanner_csv(qualified, f"{out_dir}/{cfg['dir']}_predictions.csv")
+        print(f"  {cfg['title']}: {len(qualified)} team-entries across {len(date_keys)} date(s)")
 
     build_cold_streak_scanner(all_predictions, base_dir)
 
@@ -803,7 +841,7 @@ COLD_STREAK_HTML_TEMPLATE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <p style="text-align:center;margin-bottom:6px"><a href="../../under_iq_index.html" style="color:#7ec8ff;text-decoration:none;font-size:12px">← Under IQ</a></p>
 <h2 style="text-align:center;margin-bottom:2px">🧊 Cold Form &amp; Streaks</h2>
 <p style="text-align:center;color:#888;font-size:11px;margin-top:0">{generated}</p>
-<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 2.5</a>·<a href="../under35/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Under 3.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
+<p style="text-align:center;margin:8px 0 4px;font-size:12px"><a href="../team_under15/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Team Under 1.5</a>·<a href="../team_under25/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Team Under 2.5</a>·<a href="../cold_streak/" style="color:#7ec8ff;text-decoration:none;margin:0 6px">Cold Form/Streak</a></p>
 {date_bar}
 <p style="text-align:center;margin:8px 0 4px"><a href="{csv_name}" download style="background:#222;border:1px solid #444;color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px">⬇ Export CSV</a></p>
 
@@ -929,9 +967,9 @@ def render_main_cards(predictions):
         away_hist = "/".join(str(v) for v in p["away_form"]["goals_list"]) or "—"
         cards += CARD_TEMPLATE.format(
             league=p["league"], time=p["date"][:16].replace("T", " "),
-            home_team=p["home_team"], away_team=p["away_team"],
-            exp_total=p["exp_total"], under25=p["under25"], under35=p["under35"],
-            home_under15=p["home_under15"], away_under15=p["away_under15"],
+            home_team=p["home_team"], away_team=p["away_team"], exp_total=p["exp_total"],
+            exp_home=p["exp_home"], home_under15=p["home_under15"], home_under25=p["home_under25"],
+            exp_away=p["exp_away"], away_under15=p["away_under15"], away_under25=p["away_under25"],
             home_hist=home_hist, away_hist=away_hist,
         )
     return cards
@@ -967,12 +1005,12 @@ if __name__ == "__main__":
     try:
         import results_tracker
         results_tracker.run_results_tracker(
-            all_predictions,
+            build_team_under_entries(all_predictions),
             build_cold_form_entries(all_predictions),
             build_real_cold_streak_entries(all_predictions),
             api_key,
             thresholds={
-                "under25_min": SCANNER_UNDER25_MIN, "under35_min": SCANNER_UNDER35_MIN,
+                "team_under15_min": TEAM_UNDER15_MIN, "team_under25_min": TEAM_UNDER25_MIN,
                 "real_cold_streak_threshold": REAL_COLD_STREAK_THRESHOLD,
             },
         )
