@@ -81,7 +81,18 @@ FIXTURE_WINDOW_DAYS = 10
 # scoring 3+ in one match is the exception, not the rule), so it's set
 # high to only surface teams the model is genuinely confident about, not
 # just "usually true for this team".
-TEAM_UNDER15_MIN = 70
+#
+# TEAM_UNDER15_MIN raised 70 -> 80 (user feedback with real bet365
+# evidence: Clermont Foot, Empoli and Genoa all missed Under 1.5 after
+# scoring exactly 2, and the model had priced all three at 73-75%
+# confidence -- just above the old 70% bar. Misses clustering right at
+# the threshold edge is a real calibration signal, not bad luck: at a
+# league average of ~2.4-2.5 total goals/match, each team's own share
+# sits around 1.2 goals/game, right on top of the 1.5 line, so a bar
+# only a few points above 70% was letting through picks that were still
+# essentially coin-flip-adjacent. 80% pulls the bar well clear of where
+# the actual misses were landing.
+TEAM_UNDER15_MIN = 80
 TEAM_UNDER25_MIN = 90
 
 # Verified via check_league_coverage.py-style research against real season
