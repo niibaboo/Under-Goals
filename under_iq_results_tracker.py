@@ -3,11 +3,20 @@
 Under IQ Results Tracker
 --------------------------------------------------------------
 Same architecture as Match IQ's results tracker -- logs every qualifying
-pick from Under IQ's scanners (Under 2.5, Under 3.5, Cold Form, Real
-Cold Streak) into a persistent JSON log, then on LATER runs checks back
-on entries whose match has finished and marks hit/miss against real
+pick from Under IQ's scanners (Team Under 1.5, Team Under 2.5, Cold Form,
+Real Cold Streak) into a persistent JSON log, then on LATER runs checks
+back on entries whose match has finished and marks hit/miss against real
 results. Uses the same TheStatsAPI base/auth pattern (same account as
 Match IQ).
+
+UPDATED for the match-total -> per-team pivot (see under_iq.py's module
+docstring): Under 2.5/Under 3.5 were match-total markets verified off the
+match's combined score. Team Under 1.5/Team Under 2.5 are PER-TEAM markets
+-- each entry is one team's own goals in its own match, verified against
+that team's own score, not the combined total. Team-level entries (from
+under_iq.py's build_team_under_entries) don't carry a match_id, so
+verification falls back to a date + home/away team-name search, same
+fallback Cold Form/Real Cold Streak already used.
 
 Designed to be imported and called from under_iq.py's main() -- save
 this file as results_tracker.py in the Under-Goals repo (same folder
@@ -68,11 +77,16 @@ def save_log(entries):
         json.dump(entries, f, indent=2, default=str)
 
 
-def log_todays_signals(all_predictions, cold_form_entries, streak_entries, log, thresholds):
-    """thresholds must contain: under25_min, under35_min, cold_form_max,
+def log_todays_signals(team_entries, cold_form_entries, streak_entries, log, thresholds):
+    """thresholds must contain: team_under15_min, team_under25_min,
     real_cold_streak_threshold -- passed in explicitly from under_iq.py's
     live constants rather than imported, so this module can't silently
-    drift out of sync with them."""
+    drift out of sync with them.
+
+    team_entries is the output of under_iq.py's build_team_under_entries
+    -- one row per TEAM per match (not one row per match), each carrying
+    that team's own under15/under25 probabilities. A match that has both
+    sides qualify produces two independent log entries."""
     existing_ids = {e["id"] for e in log}
     added = 0
 
@@ -93,15 +107,17 @@ def log_todays_signals(all_predictions, cold_form_entries, streak_entries, log, 
         existing_ids.add(eid)
         added += 1
 
-    for p in all_predictions:
-        match_label = f"{p['home_team']} vs {p['away_team']}"
-        base = dict(match_id=p["match_id"], match_date=p["date"], date_key=p["date_key"],
-                    league=p["league"], home_team=p["home_team"], away_team=p["away_team"])
+    for e in team_entries:
+        home_team = e["team"] if e["is_home"] else e["opponent"]
+        away_team = e["opponent"] if e["is_home"] else e["team"]
+        base = dict(match_id=None, match_date=e["date"], date_key=e["date_key"],
+                    league=e["league"], home_team=home_team, away_team=away_team)
+        detail = f"is_home={e['is_home']}, exp {e.get('exp_goals')} goals"
 
-        if p.get("under25", 0) >= thresholds["under25_min"]:
-            add("under25", match_label, "Under 2.5 Goals", p["under25"], detail=f"exp {p.get('exp_total')} goals", **base)
-        if p.get("under35", 0) >= thresholds["under35_min"]:
-            add("under35", match_label, "Under 3.5 Goals", p["under35"], detail=f"exp {p.get('exp_total')} goals", **base)
+        if e.get("under15", 0) >= thresholds["team_under15_min"]:
+            add("team_under15", e["team"], "Team Under 1.5 Goals", e["under15"], detail=detail, **base)
+        if e.get("under25", 0) >= thresholds["team_under25_min"]:
+            add("team_under25", e["team"], "Team Under 2.5 Goals", e["under25"], detail=detail, **base)
 
     for e in cold_form_entries:
         add("cold_form", e["team"], f"Cold Form vs {e['opponent']}", e["last5_avg"],
@@ -121,21 +137,51 @@ def log_todays_signals(all_predictions, cold_form_entries, streak_entries, log, 
     return log
 
 
-def _verify_under_entry(entry, key, threshold):
-    """Under 2.5 / Under 3.5 -- verify from the match's final score.
-    Under-goals hit means the ACTUAL total stayed AT OR BELOW the
-    threshold (opposite direction from an Over market)."""
-    data = _get(f"/football/matches/{entry['match_id']}", key)
-    if not data or not data.get("data"):
+def _is_home_from_detail(entry):
+    """Every logged entry's detail starts with 'is_home=True' or
+    'is_home=False' regardless of scanner -- see log_todays_signals."""
+    return entry.get("detail", "").startswith("is_home=True")
+
+
+def _lookup_finished_match_score(entry, key):
+    """Finds the match's final score. Match IQ-style entries carry a
+    match_id and go straight to the detail endpoint; team-level entries
+    from under_iq.py's build_team_under_entries don't carry a match_id
+    (it's flattened away), so those fall back to a date + home/away
+    team-name search -- the same fallback Cold Form/Real Cold Streak
+    already relied on before this pivot."""
+    data = _get(f"/football/matches/{entry['match_id']}", key) if entry.get("match_id") else None
+    if data and data.get("data"):
+        m = data["data"]
+        if m.get("status") != "finished":
+            return None
+        return m.get("score", {})
+
+    search = _get("/football/matches", key, params={
+        "date_from": entry["date_key"], "date_to": entry["date_key"], "per_page": 50,
+    })
+    if not search or not search.get("data"):
         return None
-    m = data["data"]
-    if m.get("status") != "finished":
+    match = next((m for m in search["data"]
+                  if m["home_team"]["name"] == entry["home_team"] and m["away_team"]["name"] == entry["away_team"]),
+                 None)
+    if not match or match.get("status") != "finished":
         return None
-    s = m.get("score", {})
-    if s.get("home") is None or s.get("away") is None:
+    return match.get("score", {})
+
+
+def _verify_team_under_entry(entry, key, threshold):
+    """Team Under 1.5 / Team Under 2.5 -- verify against the FLAGGED
+    TEAM's own goals in its own match (threshold=1 for Under 1.5,
+    threshold=2 for Under 2.5), not the match total. This is the whole
+    point of the pivot: a team's own Under bet shouldn't be judged by
+    what the opponent did."""
+    s = _lookup_finished_match_score(entry, key)
+    if not s or s.get("home") is None or s.get("away") is None:
         return None
-    total = s["home"] + s["away"]
-    return {"actual": total, "result": "hit" if total <= threshold else "miss"}
+    is_home = _is_home_from_detail(entry)
+    team_goals = s["home"] if is_home else s["away"]
+    return {"actual": team_goals, "result": "hit" if team_goals <= threshold else "miss"}
 
 
 def _verify_cold_entry(entry, key, cold_threshold):
@@ -144,28 +190,10 @@ def _verify_cold_entry(entry, key, cold_threshold):
     against whether the flagged team stayed cold (scored <= threshold)
     in the very match the signal was flagged alongside -- the direct
     test of "does being cold coming in correlate with staying cold"."""
-    data = _get(f"/football/matches/{entry['match_id']}", key) if entry.get("match_id") else None
-    if not data:
-        search = _get("/football/matches", key, params={
-            "date_from": entry["date_key"], "date_to": entry["date_key"], "per_page": 50,
-        })
-        if not search or not search.get("data"):
-            return None
-        match = next((m for m in search["data"]
-                      if m["home_team"]["name"] == entry["home_team"] and m["away_team"]["name"] == entry["away_team"]),
-                     None)
-        if not match or match.get("status") != "finished":
-            return None
-        s = match.get("score", {})
-    else:
-        m = data["data"]
-        if m.get("status") != "finished":
-            return None
-        s = m.get("score", {})
-
-    if s.get("home") is None or s.get("away") is None:
+    s = _lookup_finished_match_score(entry, key)
+    if not s or s.get("home") is None or s.get("away") is None:
         return None
-    is_home = entry["detail"] == "is_home=True"
+    is_home = _is_home_from_detail(entry)
     team_goals = s["home"] if is_home else s["away"]
     return {"actual": team_goals, "result": "hit" if team_goals <= cold_threshold else "miss"}
 
@@ -186,10 +214,10 @@ def verify_pending_results(log, key, thresholds, max_checks=60):
 
         result = None
         try:
-            if entry["scanner"] == "under25":
-                result = _verify_under_entry(entry, key, 2.5)
-            elif entry["scanner"] == "under35":
-                result = _verify_under_entry(entry, key, 3.5)
+            if entry["scanner"] == "team_under15":
+                result = _verify_team_under_entry(entry, key, 1)
+            elif entry["scanner"] == "team_under25":
+                result = _verify_team_under_entry(entry, key, 2)
             elif entry["scanner"] in ("cold_form", "real_cold_streak"):
                 result = _verify_cold_entry(entry, key, thresholds["real_cold_streak_threshold"])
         except Exception as e:
@@ -217,12 +245,12 @@ def build_results_dashboard(log):
         d[e["result"]] += 1
 
     SCANNER_LABELS = {
-        "under25": "Under 2.5 Goals", "under35": "Under 3.5 Goals",
+        "team_under15": "Team Under 1.5 Goals", "team_under25": "Team Under 2.5 Goals",
         "cold_form": "Cold Form", "real_cold_streak": "Real Cold Streak",
     }
 
-    total_hit = sum(d["hit"] for d in by_scanner.values())
-    total_miss = sum(d["miss"] for d in by_scanner.values())
+    total_hit = sum(1 for e in verified if e["result"] == "hit")
+    total_miss = sum(1 for e in verified if e["result"] == "miss")
     total = total_hit + total_miss
     overall_pct = round(100 * total_hit / total) if total else None
 
@@ -271,10 +299,11 @@ def build_results_dashboard(log):
 </div>
 
 <div style="font-size:11px;color:#8b98a8;text-align:center;margin-top:20px;line-height:1.6">
-  Cold Form / Real Cold Streak are verified against whether the flagged team STAYED cold
-  (scored ≤ threshold) in the SAME match the signal was flagged alongside. Under 2.5/3.5 are
-  verified against their own actual market. Sample sizes are still small early on — treat
-  percentages with real caution until there's a few weeks of data.
+  Team Under 1.5/2.5 are verified against the FLAGGED TEAM's own goals in its own match, not
+  the match total. Cold Form / Real Cold Streak are verified against whether the flagged team
+  STAYED cold (scored ≤ threshold) in the SAME match the signal was flagged alongside. Sample
+  sizes are still small early on — treat percentages with real caution until there's a few
+  weeks of data.
 </div>
 </body></html>"""
 
@@ -284,12 +313,15 @@ def build_results_dashboard(log):
     print(f"  Results dashboard: {total} verified, {overall_pct}% overall" if total else "  Results dashboard: no verified picks yet")
 
 
-def run_results_tracker(all_predictions, cold_form_entries, streak_entries, key, thresholds):
+def run_results_tracker(team_entries, cold_form_entries, streak_entries, key, thresholds):
     """Single entry point called from under_iq.py's main(). thresholds
-    must contain: under25_min, under35_min, real_cold_streak_threshold."""
+    must contain: team_under15_min, team_under25_min, real_cold_streak_threshold.
+
+    team_entries must be under_iq.py's build_team_under_entries(all_predictions)
+    output, NOT all_predictions itself -- see log_todays_signals docstring."""
     print("\nRunning results tracker...")
     log = load_log()
-    log = log_todays_signals(all_predictions, cold_form_entries, streak_entries, log, thresholds)
+    log = log_todays_signals(team_entries, cold_form_entries, streak_entries, log, thresholds)
     log = verify_pending_results(log, key, thresholds)
     save_log(log)
     build_results_dashboard(log)
