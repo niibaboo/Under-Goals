@@ -1,15 +1,20 @@
 Date,League,Team,HomeAway,Opponent,ExpGoals,Under15,Under25,Last5Goals
 2026-10-16T18:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,US Boulogne Côte-d'Opale,0.76,82,96,0/0/3/1/1/1/0
 2026-10-16T18:00:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Away,Grenoble Foot 38,0.79,81,95,0/1/0/1/0/1/1
-2026-10-17T18:45:00.000Z,Serie A,Genoa,Away,Roma,0.57,89,98,0/0/1/1/1/2
-2026-10-17T14:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,NPS Volos,0.6,88,98,0/0/0/0/0/0
-2026-10-17T12:00:00.000Z,Ligue 2,Metz,Home,Sochaux,0.74,83,96,2/0/1/1/4/0/2
-2026-10-17T12:00:00.000Z,Ligue 2,Sochaux,Away,Metz,0.75,83,96,0/1/0/1/1/1/1
+2026-10-17T14:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,NPS Volos,0.59,88,98,0/0/0/0/0/0
+2026-10-17T18:45:00.000Z,Serie A,Genoa,Away,Roma,0.58,88,98,0/0/1/1/1/2
+2026-10-17T12:00:00.000Z,Ligue 2,Metz,Home,Sochaux,0.74,83,96,0/1/1/4/0/2/2
 2026-10-17T13:00:00.000Z,Serie B,Carrarese,Home,Modena,0.74,83,96,1/1/0/0/0/2
 2026-10-17T13:00:00.000Z,Serie B,Empoli,Away,Ascoli,0.74,83,96,1/1/1/0/1/2
-2026-10-17T13:00:00.000Z,Serie A,Venezia,Home,Napoli,0.82,80,95,0/0/2/2/0
+2026-10-17T13:00:00.000Z,Serie A,Venezia,Home,Napoli,0.82,80,95,0/0/2/2/0/1
 2026-10-18T13:00:00.000Z,Serie B,Juve Stabia,Home,Südtirol,0.58,88,98,0/2/0/1/1/1
-2026-10-18T14:00:00.000Z,Stoiximan Super League,Panetolikos,Home,Olympiacos FC,0.66,86,97,3/2/2/0/1/0
 2026-10-18T14:30:00.000Z,Stoiximan Super League,Asteras Aktor,Away,Panathinaikos,0.65,86,97,1/0/0/1/2/2
-2026-10-18T16:00:00.000Z,Serie A,Atalanta,Away,Milan,0.82,80,95,2/1/1/1/0
-2026-10-19T16:30:00.000Z,Serie A,Monza,Home,Cagliari,0.83,80,95,1/2/1/2/2/1
+2026-10-18T14:00:00.000Z,Stoiximan Super League,Panetolikos,Home,Olympiacos FC,0.67,85,97,3/2/2/0/1/0
+2026-10-23T18:00:00.000Z,Ligue 2,Annecy FC,Away,Sochaux,0.69,85,97,2/1/1/2/1/1/1
+2026-10-24T16:30:00.000Z,Stoiximan Super League,APO Levadiakos,Away,Asteras Aktor,0.52,90,98,0/0/0/0/0/0
+2026-10-24T13:00:00.000Z,Serie A,Bologna,Away,Cagliari,0.58,88,98,0/0/2/0/1/2
+2026-10-24T18:45:00.000Z,Serie A,Parma,Away,Lazio,0.59,88,98,0/0/1/1/2/0
+2026-10-24T13:00:00.000Z,Serie B,Sampdoria,Away,Südtirol,0.65,86,97,1/1/1/0/2/1
+2026-10-24T15:15:00.000Z,Serie B,Catanzaro,Home,Ascoli,0.74,83,96,2/1/0/1/1/1
+2026-10-24T17:00:00.000Z,Stoiximan Super League,Panetolikos,Away,AEK Athens,0.78,82,96,3/2/2/0/1/0
+2026-10-24T17:30:00.000Z,Serie B,Arezzo,Home,Benevento,0.83,80,95,2/2/0/1/1/0
