@@ -21,6 +21,10 @@ Cold Form (avg),2026-10-24T15:15:00.000Z,Serie B,Catanzaro,Home,Ascoli,0.8,1/0/1
 Cold Form (avg),2026-10-24T18:45:00.000Z,Serie A,Parma,Away,Lazio,0.8,0/1/1/2/0
 Cold Form (avg),2026-10-24T13:00:00.000Z,Serie B,Padova,Away,Avellino,0.8,1/1/1/1/0
 Cold Form (avg),2026-10-24T17:30:00.000Z,Serie B,Arezzo,Home,Benevento,0.8,2/0/1/1/0
+Cold Form (avg),2026-10-25T14:00:00.000Z,Serie B,Carrarese,Away,Palermo,0.6,1/0/0/0/2
+Cold Form (avg),2026-10-25T14:00:00.000Z,Stoiximan Super League,Olympiacos FC,Home,PS Kalamata,0.8,1/1/0/1/1
+Cold Form (avg),2026-10-25T17:00:00.000Z,Serie A,Lecce,Home,Juventus,0.8,0/0/3/0/1
+Cold Form (avg),2026-10-26T19:45:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Home,Stade de Reims,0.6,0/1/0/1/1
 Real Cold Streak (consecutive),2026-10-16T18:00:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Away,Grenoble Foot 38,7,0/1/0/1/0/1/1
 Real Cold Streak (consecutive),2026-10-16T18:30:00.000Z,Serie B,Catanzaro,Away,Hellas Verona,5,1/0/1/1/1
 Real Cold Streak (consecutive),2026-10-16T18:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,US Boulogne Côte-d'Opale,4,1/1/1/0
@@ -37,3 +41,6 @@ Real Cold Streak (consecutive),2026-10-24T13:00:00.000Z,Serie B,Padova,Away,Avel
 Real Cold Streak (consecutive),2026-10-24T15:15:00.000Z,Serie B,Catanzaro,Home,Ascoli,5,1/0/1/1/1
 Real Cold Streak (consecutive),2026-10-24T13:00:00.000Z,Serie B,Juve Stabia,Away,Cremonese,4,0/1/1/1
 Real Cold Streak (consecutive),2026-10-24T17:30:00.000Z,Serie B,Arezzo,Home,Benevento,4,0/1/1/0
+Real Cold Streak (consecutive),2026-10-25T14:00:00.000Z,Stoiximan Super League,Olympiacos FC,Home,PS Kalamata,6,1/1/1/0/1/1
+Real Cold Streak (consecutive),2026-10-25T17:30:00.000Z,Stoiximan Super League,Atromitos Athens,Away,Aris Thessaloniki,6,0/1/1/1/1/1
+Real Cold Streak (consecutive),2026-10-26T19:45:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Home,Stade de Reims,7,0/1/0/1/0/1/1
