@@ -1,72 +1,58 @@
 Date,League,HomeTeam,AwayTeam,ExpTotal,HomeExpGoals,HomeUnder15,HomeUnder25,AwayExpGoals,AwayUnder15,AwayUnder25
-2026-10-16T18:00:00.000Z,Ligue 2,Grenoble Foot 38,US Boulogne Côte-d'Opale,1.55,0.76,82,96,0.79,81,95
-2026-10-16T18:00:00.000Z,Ligue 2,Annecy FC,Nancy,2.38,1.09,70,90,1.29,63,86
-2026-10-16T18:00:00.000Z,Ligue 2,Guingamp,Pau FC,2.58,1.09,70,90,1.49,56,81
-2026-10-16T18:00:00.000Z,Ligue 2,Stade Lavallois,Clermont Foot,2.66,1.29,63,86,1.37,60,84
-2026-10-16T18:45:00.000Z,Serie A,Frosinone,Sassuolo,3.04,1.64,51,77,1.4,59,83
-2026-10-16T18:30:00.000Z,Serie B,Hellas Verona,Catanzaro,3.65,2.36,32,58,1.29,63,86
-2026-10-16T18:00:00.000Z,Ligue 2,Stade de Reims,Dijon,3.87,2.18,36,63,1.69,50,76
-2026-10-17T12:00:00.000Z,Ligue 2,Metz,Sochaux,1.69,0.74,83,96,0.95,75,93
-2026-10-17T14:00:00.000Z,Stoiximan Super League,APO Levadiakos,NPS Volos,2.0,0.59,88,98,1.41,59,83
-2026-10-17T13:00:00.000Z,Serie B,Carrarese,Modena,2.12,0.74,83,96,1.38,60,84
-2026-10-17T13:00:00.000Z,Serie B,Ascoli,Empoli,2.17,1.43,58,83,0.74,83,96
-2026-10-17T13:00:00.000Z,Serie B,Padova,Virtus Entella,2.24,0.92,77,93,1.32,62,85
-2026-10-17T17:30:00.000Z,Serie B,Pisa,Cremonese,2.52,1.53,55,80,0.99,74,92
-2026-10-17T12:00:00.000Z,Ligue 2,Nantes,USL Dunkerque,2.7,1.49,56,81,1.21,66,88
-2026-10-17T13:00:00.000Z,Serie B,Benevento,L.R. Vicenza,2.79,1.87,44,71,0.92,77,93
-2026-10-17T18:45:00.000Z,Serie A,Roma,Genoa,2.99,2.41,31,57,0.58,88,98
-2026-10-17T16:00:00.000Z,Serie A,Bologna,Inter,3.16,0.98,74,92,2.18,36,63
-2026-10-17T13:00:00.000Z,Serie A,Venezia,Napoli,3.33,0.82,80,95,2.51,29,54
-2026-10-17T15:15:00.000Z,Serie B,Mantova,Palermo,3.38,1.73,48,75,1.65,51,77
-2026-10-17T18:00:00.000Z,Ligue 2,Red Star FC,Saint-Étienne,3.56,1.37,60,84,2.19,36,63
-2026-10-18T14:00:00.000Z,Stoiximan Super League,Panetolikos,Olympiacos FC,1.76,0.67,85,97,1.09,70,90
-2026-10-18T13:00:00.000Z,Serie B,Juve Stabia,Südtirol,2.02,0.58,88,98,1.44,58,82
-2026-10-18T18:45:00.000Z,Serie A,Juventus,Lazio,2.17,0.95,75,93,1.22,66,88
-2026-10-18T16:00:00.000Z,Serie A,Milan,Atalanta,2.59,1.61,52,78,0.98,74,92
-2026-10-18T18:00:00.000Z,Stoiximan Super League,PAOK,Iraklis 1908,2.74,1.61,52,78,1.13,69,89
-2026-10-18T17:00:00.000Z,Stoiximan Super League,AE Kifisia,Aris Thessaloniki,2.75,1.51,55,81,1.24,65,87
-2026-10-18T14:30:00.000Z,Stoiximan Super League,Panathinaikos,Asteras Aktor,2.76,2.11,38,65,0.65,86,97
-2026-10-18T15:15:00.000Z,Serie B,Cesena,Avellino,2.79,1.13,69,89,1.66,51,77
-2026-10-18T13:00:00.000Z,Stoiximan Super League,PS Kalamata,OFI Crete,2.82,1.35,61,85,1.47,57,82
-2026-10-18T13:00:00.000Z,Serie A,Fiorentina,Como,3.1,1.0,74,92,2.1,38,65
-2026-10-18T17:30:00.000Z,Serie B,Sampdoria,Arezzo,3.12,1.56,54,79,1.56,54,79
-2026-10-18T10:30:00.000Z,Serie A,Udinese,Lecce,3.4,1.87,44,71,1.53,55,80
-2026-10-19T18:45:00.000Z,Serie A,Parma,Torino,2.35,0.95,75,93,1.4,59,83
-2026-10-19T16:30:00.000Z,Serie A,Monza,Cagliari,2.54,0.84,79,95,1.7,49,76
-2026-10-19T18:45:00.000Z,Ligue 2,Rodez AF,Montpellier,2.67,0.91,77,94,1.76,47,74
-2026-10-23T18:00:00.000Z,Ligue 2,Sochaux,Annecy FC,1.57,0.88,78,94,0.69,85,97
-2026-10-23T18:00:00.000Z,Ligue 2,Pau FC,Grenoble Foot 38,2.13,1.29,63,86,0.84,79,95
-2026-10-23T18:00:00.000Z,Ligue 2,Clermont Foot,Guingamp,2.43,1.14,68,89,1.29,63,86
-2026-10-23T18:00:00.000Z,Ligue 2,USL Dunkerque,Metz,2.67,1.07,71,91,1.6,52,78
-2026-10-23T18:00:00.000Z,Ligue 2,Nancy,Stade Lavallois,2.88,1.79,47,73,1.09,70,90
-2026-10-23T18:30:00.000Z,Serie B,Empoli,L.R. Vicenza,2.99,1.56,54,79,1.43,58,83
-2026-10-23T18:45:00.000Z,Serie A,Torino,Monza,3.41,1.88,44,71,1.53,55,80
-2026-10-24T13:00:00.000Z,Serie A,Cagliari,Bologna,1.58,1.0,74,92,0.58,88,98
-2026-10-24T13:00:00.000Z,Serie B,Cremonese,Juve Stabia,1.91,0.99,74,92,0.92,77,93
-2026-10-24T16:30:00.000Z,Stoiximan Super League,Asteras Aktor,APO Levadiakos,1.93,1.41,59,83,0.52,90,98
-2026-10-24T16:00:00.000Z,Stoiximan Super League,Iraklis 1908,AE Kifisia,1.98,1.04,72,91,0.94,76,93
-2026-10-24T12:00:00.000Z,Ligue 2,Montpellier,Red Star FC,2.0,1.09,70,90,0.91,77,94
-2026-10-24T15:15:00.000Z,Serie B,Catanzaro,Ascoli,2.37,0.74,83,96,1.63,52,78
-2026-10-24T18:45:00.000Z,Serie A,Lazio,Parma,2.48,1.89,44,71,0.59,88,98
-2026-10-24T16:00:00.000Z,Serie A,Napoli,Roma,2.51,0.9,77,94,1.61,52,78
-2026-10-24T13:00:00.000Z,Serie B,Avellino,Padova,2.58,1.66,51,77,0.92,77,93
-2026-10-24T13:00:00.000Z,Serie B,Modena,Cesena,2.68,1.66,51,77,1.02,73,92
-2026-10-24T13:00:00.000Z,Serie B,Südtirol,Sampdoria,2.69,2.04,40,67,0.65,86,97
-2026-10-24T17:30:00.000Z,Serie B,Arezzo,Benevento,2.7,0.83,80,95,1.87,44,71
-2026-10-24T13:00:00.000Z,Serie B,Virtus Entella,Mantova,2.83,1.1,70,90,1.73,48,75
-2026-10-24T13:00:00.000Z,Serie A,Como,Sassuolo,2.9,1.64,51,77,1.26,64,87
-2026-10-24T17:00:00.000Z,Stoiximan Super League,AEK Athens,Panetolikos,3.24,2.46,30,55,0.78,82,96
-2026-10-24T18:00:00.000Z,Ligue 2,Saint-Étienne,Nantes,3.87,2.68,25,50,1.19,67,88
-2026-10-24T12:00:00.000Z,Ligue 2,Dijon,Rodez AF,4.45,2.73,24,49,1.72,49,75
-2026-10-25T14:00:00.000Z,Stoiximan Super League,Olympiacos FC,PS Kalamata,1.81,1.09,70,90,0.72,84,96
-2026-10-25T14:00:00.000Z,Serie B,Palermo,Carrarese,2.47,1.65,51,77,0.82,80,95
-2026-10-25T14:00:00.000Z,Serie A,Atalanta,Frosinone,2.6,1.2,66,88,1.4,59,83
-2026-10-25T17:00:00.000Z,Serie A,Lecce,Juventus,2.69,0.82,80,95,1.87,44,71
-2026-10-25T17:30:00.000Z,Stoiximan Super League,Aris Thessaloniki,Atromitos Athens,2.81,1.47,57,82,1.34,61,85
-2026-10-25T14:00:00.000Z,Serie A,Genoa,Venezia,2.84,1.62,52,78,1.22,66,88
-2026-10-25T16:00:00.000Z,Stoiximan Super League,NPS Volos,Panathinaikos,3.06,0.65,86,97,2.41,31,57
-2026-10-25T18:00:00.000Z,Stoiximan Super League,OFI Crete,PAOK,3.13,1.36,61,84,1.77,47,74
-2026-10-25T19:45:00.000Z,Serie A,Udinese,Milan,3.34,1.06,71,91,2.28,34,60
-2026-10-25T16:15:00.000Z,Serie B,Hellas Verona,Pisa,3.7,1.76,47,74,1.94,42,69
-2026-10-25T11:30:00.000Z,Serie A,Inter,Fiorentina,4.71,3.51,13,32,1.2,66,88
-2026-10-26T19:45:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Stade de Reims,2.24,0.79,81,95,1.45,57,82
+2026-10-19T18:45:00.000Z,Ligue 2,Rodez AF,Montpellier,2.63,0.9,77,94,1.73,48,75
+2026-10-23T18:00:00.000Z,Ligue 2,Sochaux,Annecy FC,2.12,1.23,65,87,0.89,78,94
+2026-10-23T18:00:00.000Z,Ligue 2,Pau FC,Grenoble Foot 38,2.47,1.57,53,79,0.9,77,94
+2026-10-23T18:00:00.000Z,Ligue 2,Clermont Foot,Guingamp,2.77,1.51,55,81,1.26,64,87
+2026-10-23T18:00:00.000Z,Ligue 2,USL Dunkerque,Metz,2.97,1.19,67,88,1.78,47,74
+2026-10-23T18:30:00.000Z,Serie B,Empoli,L.R. Vicenza,3.0,1.55,54,80,1.45,57,82
+2026-10-23T18:45:00.000Z,Serie A,Torino,Monza,3.37,1.86,45,71,1.51,55,81
+2026-10-23T18:00:00.000Z,Ligue 2,Nancy,Stade Lavallois,3.39,2.24,34,61,1.15,68,89
+2026-10-24T13:00:00.000Z,Serie A,Cagliari,Bologna,1.7,1.12,69,90,0.58,88,98
+2026-10-24T16:30:00.000Z,Stoiximan Super League,Asteras Aktor,APO Levadiakos,1.83,1.25,64,87,0.58,88,98
+2026-10-24T12:00:00.000Z,Ligue 2,Montpellier,Red Star FC,2.05,1.15,68,89,0.9,77,94
+2026-10-24T16:00:00.000Z,Stoiximan Super League,Iraklis 1908,AE Kifisia,2.08,1.08,71,90,1.0,74,92
+2026-10-24T13:00:00.000Z,Serie B,Cremonese,Juve Stabia,2.15,0.9,77,94,1.25,64,87
+2026-10-24T16:00:00.000Z,Serie A,Napoli,Roma,2.3,0.72,84,96,1.58,53,79
+2026-10-24T15:15:00.000Z,Serie B,Catanzaro,Ascoli,2.42,0.81,81,95,1.61,52,78
+2026-10-24T18:45:00.000Z,Serie A,Lazio,Parma,2.53,2.0,41,68,0.53,90,98
+2026-10-24T13:00:00.000Z,Serie B,Avellino,Padova,2.56,1.66,51,77,0.9,77,94
+2026-10-24T13:00:00.000Z,Serie B,Modena,Cesena,2.62,1.55,54,80,1.07,71,91
+2026-10-24T13:00:00.000Z,Serie B,Südtirol,Sampdoria,2.65,1.83,45,72,0.82,80,95
+2026-10-24T13:00:00.000Z,Serie B,Virtus Entella,Mantova,2.77,1.25,64,87,1.52,55,80
+2026-10-24T17:30:00.000Z,Serie B,Arezzo,Benevento,2.85,0.98,74,92,1.87,44,71
+2026-10-24T17:00:00.000Z,Stoiximan Super League,AEK Athens,Panetolikos,3.2,2.5,29,54,0.7,84,97
+2026-10-24T13:00:00.000Z,Serie A,Como,Sassuolo,3.3,2.04,40,67,1.26,64,87
+2026-10-24T18:00:00.000Z,Ligue 2,Saint-Étienne,Nantes,3.68,2.53,28,54,1.15,68,89
+2026-10-24T12:00:00.000Z,Ligue 2,Dijon,Rodez AF,4.96,2.95,21,43,2.01,40,67
+2026-10-25T14:00:00.000Z,Stoiximan Super League,Olympiacos FC,PS Kalamata,2.1,1.33,62,85,0.77,82,96
+2026-10-25T14:00:00.000Z,Serie B,Palermo,Carrarese,2.46,1.64,51,77,0.82,80,95
+2026-10-25T14:00:00.000Z,Serie A,Genoa,Venezia,2.52,1.29,63,86,1.23,65,87
+2026-10-25T17:00:00.000Z,Serie A,Lecce,Juventus,2.62,1.13,69,89,1.49,56,81
+2026-10-25T17:30:00.000Z,Stoiximan Super League,Aris Thessaloniki,Atromitos Athens,2.8,1.53,55,80,1.27,64,86
+2026-10-25T14:00:00.000Z,Serie A,Atalanta,Frosinone,3.13,1.31,62,85,1.82,46,73
+2026-10-25T16:00:00.000Z,Stoiximan Super League,NPS Volos,Panathinaikos,3.13,0.6,88,98,2.53,28,54
+2026-10-25T19:45:00.000Z,Serie A,Udinese,Milan,3.59,1.04,72,91,2.55,28,53
+2026-10-25T18:00:00.000Z,Stoiximan Super League,OFI Crete,PAOK,3.59,1.46,57,82,2.13,37,64
+2026-10-25T16:15:00.000Z,Serie B,Hellas Verona,Pisa,3.88,1.74,48,75,2.14,37,64
+2026-10-25T11:30:00.000Z,Serie A,Inter,Fiorentina,4.82,3.69,12,29,1.13,69,89
+2026-10-26T19:45:00.000Z,Ligue 2,US Boulogne Côte-d'Opale,Stade de Reims,2.23,0.9,77,94,1.33,62,85
+2026-10-27T19:45:00.000Z,Serie A,Roma,Cagliari,1.72,1.14,68,89,0.58,88,98
+2026-10-27T19:00:00.000Z,Serie B,Padova,Südtirol,2.1,0.75,83,96,1.35,61,85
+2026-10-27T19:00:00.000Z,Serie B,Cesena,Empoli,2.41,1.34,61,85,1.07,71,91
+2026-10-27T19:00:00.000Z,Serie B,Ascoli,Sampdoria,2.43,1.69,50,76,0.74,83,96
+2026-10-27T19:45:00.000Z,Serie A,Torino,Como,2.63,0.98,74,92,1.65,51,77
+2026-10-27T19:00:00.000Z,Serie B,Mantova,Cremonese,2.67,1.77,47,74,0.9,77,94
+2026-10-27T19:00:00.000Z,Serie B,Virtus Entella,Avellino,2.68,1.25,64,87,1.43,58,83
+2026-10-27T18:00:00.000Z,Serie B,Benevento,Catanzaro,2.85,1.87,44,71,0.98,74,92
+2026-10-27T17:30:00.000Z,Serie A,Sassuolo,Lazio,3.23,0.93,76,93,2.3,33,60
+2026-10-27T19:00:00.000Z,Serie B,L.R. Vicenza,Modena,3.41,1.16,68,89,2.25,34,61
+2026-10-28T19:00:00.000Z,Serie B,Carrarese,Arezzo,2.32,1.34,61,85,0.98,74,92
+2026-10-28T19:45:00.000Z,Serie A,Genoa,Juventus,2.36,0.78,82,96,1.58,53,79
+2026-10-28T17:30:00.000Z,Serie A,Milan,Bologna,2.61,1.8,46,73,0.81,81,95
+2026-10-28T17:30:00.000Z,Serie A,Parma,Udinese,2.75,1.29,63,86,1.46,57,82
+2026-10-28T19:00:00.000Z,Serie B,Juve Stabia,Hellas Verona,3.04,1.43,58,83,1.61,52,78
+2026-10-28T19:45:00.000Z,Serie A,Monza,Napoli,3.26,1.15,68,89,2.11,38,65
+2026-10-28T18:00:00.000Z,Serie B,Pisa,Palermo,3.4,1.47,57,82,1.93,43,70
+2026-10-28T17:30:00.000Z,Serie A,Venezia,Inter,4.47,0.95,75,93,3.52,13,32
+2026-10-29T17:30:00.000Z,Serie A,Frosinone,Lecce,3.16,1.94,42,69,1.22,66,88
+2026-10-29T19:45:00.000Z,Serie A,Fiorentina,Atalanta,3.39,1.3,63,86,2.09,38,65
