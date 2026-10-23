@@ -2,10 +2,7 @@ Type,Date,League,Team,HomeAway,Opponent,Value,Games
 Cold Form (avg),2026-10-23T18:00:00.000Z,Ligue 2,Grenoble Foot 38,Away,Pau FC,0.6,1/1/1/0/0
 Cold Form (avg),2026-10-24T16:30:00.000Z,Stoiximan Super League,APO Levadiakos,Away,Asteras Aktor,0.0,0/0/0/0/0
 Cold Form (avg),2026-10-24T17:00:00.000Z,Stoiximan Super League,Panetolikos,Away,AEK Athens,0.6,2/0/1/0/0
-Cold Form (avg),2026-10-24T18:45:00.000Z,Serie A,Parma,Away,Lazio,0.8,1/1/2/0/0
-Cold Form (avg),2026-10-24T17:30:00.000Z,Serie B,Arezzo,Home,Benevento,0.8,0/1/1/0/2
 Cold Form (avg),2026-10-24T12:00:00.000Z,Ligue 2,Rodez AF,Away,Dijon,0.8,1/0/3/0/0
-Cold Form (avg),2026-10-25T14:00:00.000Z,Serie B,Carrarese,Away,Palermo,0.8,0/0/0/2/2
 Cold Form (avg),2026-10-27T19:00:00.000Z,Serie B,Padova,Home,Südtirol,0.8,1/1/1/0/1
 Cold Form (avg),2026-10-28T19:00:00.000Z,Serie B,Carrarese,Home,Arezzo,0.8,0/0/0/2/2
 Cold Form (avg),2026-10-28T19:00:00.000Z,Serie B,Arezzo,Away,Carrarese,0.8,0/1/1/0/2
@@ -13,6 +10,11 @@ Cold Form (avg),2026-10-28T17:30:00.000Z,Serie A,Parma,Home,Udinese,0.8,1/1/2/0/
 Cold Form (avg),2026-10-30T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Dijon,0.6,1/1/1/0/0
 Cold Form (avg),2026-10-30T19:00:00.000Z,Ligue 2,Rodez AF,Home,USL Dunkerque,0.8,1/0/3/0/0
 Cold Form (avg),2026-10-31T16:15:00.000Z,Serie B,Padova,Away,Catanzaro,0.8,1/1/1/0/1
+Cold Form (avg),2026-11-01T15:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,Aris Thessaloniki,0.0,0/0/0/0/0
+Cold Form (avg),2026-11-01T16:00:00.000Z,Stoiximan Super League,Panetolikos,Home,OFI Crete,0.6,2/0/1/0/0
+Cold Form (avg),2026-11-01T14:00:00.000Z,Serie B,Arezzo,Home,Ascoli,0.8,0/1/1/0/2
+Cold Form (avg),2026-11-01T16:15:00.000Z,Serie B,Carrarese,Away,Hellas Verona,0.8,0/0/0/2/2
+Cold Form (avg),2026-11-02T19:45:00.000Z,Serie A,Parma,Away,Atalanta,0.8,1/1/2/0/0
 Real Cold Streak (consecutive),2026-10-23T18:00:00.000Z,Ligue 2,Grenoble Foot 38,Away,Pau FC,5,1/1/1/0/0
 Real Cold Streak (consecutive),2026-10-23T18:00:00.000Z,Ligue 2,Annecy FC,Away,Sochaux,4,1/1/1/1
 Real Cold Streak (consecutive),2026-10-24T16:30:00.000Z,Stoiximan Super League,APO Levadiakos,Away,Asteras Aktor,7,0/0/0/0/0/0/0
@@ -22,3 +24,6 @@ Real Cold Streak (consecutive),2026-10-27T19:00:00.000Z,Serie B,Padova,Home,Süd
 Real Cold Streak (consecutive),2026-10-30T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Dijon,5,1/1/1/0/0
 Real Cold Streak (consecutive),2026-10-31T16:15:00.000Z,Serie B,Padova,Away,Catanzaro,7,1/1/1/1/1/0/1
 Real Cold Streak (consecutive),2026-10-31T13:00:00.000Z,Ligue 2,Annecy FC,Home,Montpellier,4,1/1/1/1
+Real Cold Streak (consecutive),2026-11-01T15:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,Aris Thessaloniki,7,0/0/0/0/0/0/0
+Real Cold Streak (consecutive),2026-11-01T16:00:00.000Z,Stoiximan Super League,Panetolikos,Home,OFI Crete,4,0/1/0/0
+Real Cold Streak (consecutive),2026-11-02T16:00:00.000Z,Stoiximan Super League,Atromitos Athens,Home,NPS Volos,6,0/1/1/1/1/1
