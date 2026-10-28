@@ -1,42 +1,42 @@
 Type,Date,League,Team,HomeAway,Opponent,Value,Games
-Cold Form (avg),2026-10-27T19:00:00.000Z,Serie B,Cremonese,Away,Mantova,0.6,2/0/0/1/0
-Cold Form (avg),2026-10-27T19:00:00.000Z,Serie B,Padova,Home,Südtirol,0.8,1/1/0/1/1
-Cold Form (avg),2026-10-27T19:45:00.000Z,Serie A,Cagliari,Away,Roma,0.8,2/1/1/0/0
-Cold Form (avg),2026-10-27T19:00:00.000Z,Serie B,Cesena,Home,Empoli,0.8,2/1/0/1/0
-Cold Form (avg),2026-10-27T19:00:00.000Z,Serie B,Empoli,Away,Cesena,0.8,0/1/2/1/0
 Cold Form (avg),2026-10-28T19:00:00.000Z,Serie B,Arezzo,Away,Carrarese,0.8,1/1/0/2/0
-Cold Form (avg),2026-10-28T17:30:00.000Z,Serie A,Parma,Home,Udinese,0.8,1/2/0/0/1
-Cold Form (avg),2026-10-28T17:30:00.000Z,Serie A,Udinese,Away,Parma,0.8,3/0/1/0/0
 Cold Form (avg),2026-10-28T17:30:00.000Z,Serie A,Venezia,Home,Inter,0.8,2/0/1/1/0
 Cold Form (avg),2026-10-30T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Dijon,0.6,1/1/0/0/1
 Cold Form (avg),2026-10-30T19:00:00.000Z,Ligue 2,Nantes,Home,Clermont Foot,0.8,0/2/0/2/0
-Cold Form (avg),2026-10-31T14:00:00.000Z,Serie B,Cremonese,Home,Benevento,0.6,2/0/0/1/0
-Cold Form (avg),2026-10-31T14:00:00.000Z,Serie B,Cesena,Away,Südtirol,0.8,2/1/0/1/0
-Cold Form (avg),2026-10-31T16:15:00.000Z,Serie B,Padova,Away,Catanzaro,0.8,1/1/0/1/1
+Cold Form (avg),2026-10-31T14:00:00.000Z,Serie B,Cremonese,Home,Benevento,0.6,0/0/1/0/2
+Cold Form (avg),2026-10-31T14:00:00.000Z,Serie B,Cesena,Away,Südtirol,0.8,1/0/1/0/2
+Cold Form (avg),2026-10-31T18:30:00.000Z,Serie B,Virtus Entella,Away,Sampdoria,0.8,0/1/2/0/1
 Cold Form (avg),2026-10-31T17:00:00.000Z,Serie A,Udinese,Home,Roma,0.8,3/0/1/0/0
 Cold Form (avg),2026-11-01T15:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,Aris Thessaloniki,0.0,0/0/0/0/0
 Cold Form (avg),2026-11-01T16:00:00.000Z,Stoiximan Super League,Panetolikos,Home,OFI Crete,0.2,0/1/0/0/0
-Cold Form (avg),2026-11-01T14:00:00.000Z,Serie A,Cagliari,Away,Lazio,0.8,2/1/1/0/0
-Cold Form (avg),2026-11-01T14:00:00.000Z,Serie B,Empoli,Home,Juve Stabia,0.8,0/1/2/1/0
 Cold Form (avg),2026-11-01T11:30:00.000Z,Serie A,Venezia,Away,Como,0.8,2/0/1/1/0
 Cold Form (avg),2026-11-01T14:00:00.000Z,Serie B,Arezzo,Home,Ascoli,0.8,1/1/0/2/0
+Cold Form (avg),2026-11-01T14:00:00.000Z,Serie A,Cagliari,Away,Lazio,0.8,1/1/0/0/2
 Cold Form (avg),2026-11-02T16:00:00.000Z,Stoiximan Super League,NPS Volos,Away,Atromitos Athens,0.8,1/1/2/0/0
 Cold Form (avg),2026-11-02T19:45:00.000Z,Serie A,Parma,Away,Atalanta,0.8,1/2/0/0/1
-Real Cold Streak (consecutive),2026-10-27T19:00:00.000Z,Serie B,Padova,Home,Südtirol,7,1/1/1/1/0/1/1
-Real Cold Streak (consecutive),2026-10-27T19:45:00.000Z,Serie A,Cagliari,Away,Roma,4,1/1/0/0
-Real Cold Streak (consecutive),2026-10-27T19:00:00.000Z,Serie B,Cremonese,Away,Mantova,4,0/0/1/0
-Real Cold Streak (consecutive),2026-10-27T19:00:00.000Z,Serie B,Cesena,Home,Empoli,4,1/0/1/0
-Real Cold Streak (consecutive),2026-10-28T17:30:00.000Z,Serie A,Udinese,Away,Parma,4,0/1/0/0
+Cold Form (avg),2026-11-06T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Stade de Reims,0.6,1/1/0/0/1
+Cold Form (avg),2026-11-06T19:45:00.000Z,Serie A,Venezia,Home,Udinese,0.8,2/0/1/1/0
+Cold Form (avg),2026-11-06T19:45:00.000Z,Serie A,Udinese,Away,Venezia,0.8,3/0/1/0/0
+Cold Form (avg),2026-11-07T17:30:00.000Z,Stoiximan Super League,Panetolikos,Away,Aris Thessaloniki,0.2,0/1/0/0/0
+Cold Form (avg),2026-11-07T17:00:00.000Z,Serie A,Parma,Home,Bologna,0.8,1/2/0/0/1
+Cold Form (avg),2026-11-07T15:00:00.000Z,Stoiximan Super League,NPS Volos,Home,AE Kifisia,0.8,1/1/2/0/0
+Cold Form (avg),2026-11-07T19:00:00.000Z,Ligue 2,Nantes,Away,Pau FC,0.8,0/2/0/2/0
+Cold Form (avg),2026-11-07T14:00:00.000Z,Serie B,Arezzo,Away,Juve Stabia,0.8,1/1/0/2/0
+Cold Form (avg),2026-11-07T14:00:00.000Z,Serie B,Cesena,Home,Catanzaro,0.8,1/0/1/0/2
+Cold Form (avg),2026-11-07T14:00:00.000Z,Serie A,Cagliari,Home,Frosinone,0.8,1/1/0/0/2
 Real Cold Streak (consecutive),2026-10-28T17:30:00.000Z,Serie A,Venezia,Home,Inter,4,0/1/1/0
 Real Cold Streak (consecutive),2026-10-29T19:45:00.000Z,Serie A,Fiorentina,Home,Atalanta,4,1/1/1/1
 Real Cold Streak (consecutive),2026-10-30T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Dijon,6,1/1/1/0/0/1
-Real Cold Streak (consecutive),2026-10-31T16:15:00.000Z,Serie B,Padova,Away,Catanzaro,7,1/1/1/1/0/1/1
-Real Cold Streak (consecutive),2026-10-31T14:00:00.000Z,Serie B,Cremonese,Home,Benevento,4,0/0/1/0
-Real Cold Streak (consecutive),2026-10-31T14:00:00.000Z,Serie B,Cesena,Away,Südtirol,4,1/0/1/0
+Real Cold Streak (consecutive),2026-10-31T14:00:00.000Z,Serie B,Südtirol,Home,Cesena,4,0/0/1/0
+Real Cold Streak (consecutive),2026-10-31T18:30:00.000Z,Serie B,Sampdoria,Home,Virtus Entella,4,1/1/1/0
 Real Cold Streak (consecutive),2026-10-31T17:00:00.000Z,Serie A,Udinese,Home,Roma,4,0/1/0/0
 Real Cold Streak (consecutive),2026-11-01T15:00:00.000Z,Stoiximan Super League,APO Levadiakos,Home,Aris Thessaloniki,7,0/0/0/0/0/0/0
 Real Cold Streak (consecutive),2026-11-01T16:00:00.000Z,Stoiximan Super League,Panetolikos,Home,OFI Crete,5,0/1/0/0/0
-Real Cold Streak (consecutive),2026-11-01T14:00:00.000Z,Serie A,Cagliari,Away,Lazio,4,1/1/0/0
 Real Cold Streak (consecutive),2026-11-01T11:30:00.000Z,Serie A,Venezia,Away,Como,4,0/1/1/0
 Real Cold Streak (consecutive),2026-11-02T16:00:00.000Z,Stoiximan Super League,Atromitos Athens,Home,NPS Volos,7,0/1/1/1/1/1/1
 Real Cold Streak (consecutive),2026-11-02T17:30:00.000Z,Serie A,Fiorentina,Away,Sassuolo,4,1/1/1/1
+Real Cold Streak (consecutive),2026-11-06T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Stade de Reims,6,1/1/1/0/0/1
+Real Cold Streak (consecutive),2026-11-06T19:45:00.000Z,Serie A,Venezia,Home,Udinese,4,0/1/1/0
+Real Cold Streak (consecutive),2026-11-06T19:45:00.000Z,Serie A,Udinese,Away,Venezia,4,0/1/0/0
+Real Cold Streak (consecutive),2026-11-07T17:30:00.000Z,Stoiximan Super League,Panetolikos,Away,Aris Thessaloniki,5,0/1/0/0/0
+Real Cold Streak (consecutive),2026-11-07T14:00:00.000Z,Serie B,Südtirol,Away,Pisa,4,0/0/1/0
