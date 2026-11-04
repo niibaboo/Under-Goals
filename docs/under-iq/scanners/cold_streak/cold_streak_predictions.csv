@@ -1,6 +1,4 @@
 Type,Date,League,Team,HomeAway,Opponent,Value,Games
-Cold Form (avg),2026-11-02T19:45:00.000Z,Serie A,Parma,Away,Atalanta,0.6,2/0/0/1/0
-Cold Form (avg),2026-11-02T16:00:00.000Z,Stoiximan Super League,NPS Volos,Away,Atromitos Athens,0.8,1/1/2/0/0
 Cold Form (avg),2026-11-06T19:45:00.000Z,Serie A,Venezia,Home,Udinese,0.4,1/1/0/0/0
 Cold Form (avg),2026-11-06T19:45:00.000Z,Serie A,Udinese,Away,Venezia,0.6,1/0/0/0/2
 Cold Form (avg),2026-11-06T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Stade de Reims,0.6,1/0/0/1/1
@@ -8,18 +6,14 @@ Cold Form (avg),2026-11-06T19:00:00.000Z,Ligue 2,USL Dunkerque,Home,Guingamp,0.8
 Cold Form (avg),2026-11-07T17:30:00.000Z,Stoiximan Super League,Panetolikos,Away,Aris Thessaloniki,0.2,1/0/0/0/0
 Cold Form (avg),2026-11-07T14:00:00.000Z,Serie B,Südtirol,Away,Pisa,0.4,0/0/1/0/1
 Cold Form (avg),2026-11-07T14:00:00.000Z,Serie B,Arezzo,Away,Juve Stabia,0.6,0/2/0/1/0
-Cold Form (avg),2026-11-07T17:00:00.000Z,Serie A,Parma,Home,Bologna,0.6,2/0/0/1/0
-Cold Form (avg),2026-11-07T15:00:00.000Z,Stoiximan Super League,NPS Volos,Home,AE Kifisia,0.8,1/1/2/0/0
+Cold Form (avg),2026-11-07T15:00:00.000Z,Stoiximan Super League,NPS Volos,Home,AE Kifisia,0.6,1/2/0/0/0
+Cold Form (avg),2026-11-07T17:00:00.000Z,Serie A,Parma,Home,Bologna,0.8,0/0/1/0/3
 Cold Form (avg),2026-11-07T14:00:00.000Z,Serie B,Cesena,Home,Catanzaro,0.8,0/1/0/2/1
 Cold Form (avg),2026-11-07T14:00:00.000Z,Serie A,Cagliari,Home,Frosinone,0.8,1/0/0/2/1
 Cold Form (avg),2026-11-08T15:00:00.000Z,Stoiximan Super League,APO Levadiakos,Away,AEK Athens,0.6,0/0/0/0/3
 Cold Form (avg),2026-11-08T14:00:00.000Z,Serie B,Virtus Entella,Home,Modena,0.8,1/2/0/1/0
-Real Cold Streak (consecutive),2026-11-02T16:00:00.000Z,Stoiximan Super League,Atromitos Athens,Home,NPS Volos,7,0/1/1/1/1/1/1
-Real Cold Streak (consecutive),2026-11-02T19:45:00.000Z,Serie A,Parma,Away,Atalanta,4,0/0/1/0
 Real Cold Streak (consecutive),2026-11-06T19:00:00.000Z,Ligue 2,Grenoble Foot 38,Home,Stade de Reims,7,1/1/1/0/0/1/1
 Real Cold Streak (consecutive),2026-11-06T19:45:00.000Z,Serie A,Venezia,Home,Udinese,6,0/1/1/0/0/0
 Real Cold Streak (consecutive),2026-11-07T17:30:00.000Z,Stoiximan Super League,Panetolikos,Away,Aris Thessaloniki,6,0/1/0/0/0/0
 Real Cold Streak (consecutive),2026-11-07T14:00:00.000Z,Serie B,Südtirol,Away,Pisa,5,0/0/1/0/1
-Real Cold Streak (consecutive),2026-11-07T17:00:00.000Z,Serie A,Parma,Home,Bologna,4,0/0/1/0
 Real Cold Streak (consecutive),2026-11-07T16:15:00.000Z,Serie B,Mantova,Home,Hellas Verona,4,0/1/0/1
-Real Cold Streak (consecutive),2026-11-08T16:30:00.000Z,Stoiximan Super League,Atromitos Athens,Away,OFI Crete,7,0/1/1/1/1/1/1
