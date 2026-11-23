@@ -1,951 +1,5 @@
 [
   {
-    "match_id": "mt_155800501",
-    "league": "Ligue 2",
-    "date": "2026-11-20T19:00:00.000Z",
-    "date_key": "2026-11-20",
-    "home_team": "Guingamp",
-    "away_team": "Rodez AF",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        2,
-        1,
-        0,
-        1,
-        2,
-        3,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.86,
-      "avg_conceded": 1.71,
-      "goals_list": [
-        0,
-        3,
-        0,
-        0,
-        2,
-        1,
-        0
-      ]
-    },
-    "exp_home": 1.55,
-    "exp_away": 1.05,
-    "exp_total": 2.6,
-    "home_under15": 54,
-    "away_under15": 72,
-    "home_under25": 80,
-    "away_under25": 91
-  },
-  {
-    "match_id": "mt_511922127",
-    "league": "Ligue 2",
-    "date": "2026-11-20T19:00:00.000Z",
-    "date_key": "2026-11-20",
-    "home_team": "Annecy FC",
-    "away_team": "Clermont Foot",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.86,
-      "goals_list": [
-        1,
-        1,
-        1,
-        1,
-        3,
-        0,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        0,
-        1,
-        2,
-        3,
-        0,
-        1,
-        1
-      ]
-    },
-    "exp_home": 1.15,
-    "exp_away": 1.52,
-    "exp_total": 2.67,
-    "home_under15": 68,
-    "away_under15": 55,
-    "home_under25": 89,
-    "away_under25": 80
-  },
-  {
-    "match_id": "mt_899755956",
-    "league": "Ligue 2",
-    "date": "2026-11-20T19:00:00.000Z",
-    "date_key": "2026-11-20",
-    "home_team": "Metz",
-    "away_team": "US Boulogne C\u00f4te-d'Opale",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        0,
-        2,
-        2,
-        3,
-        1,
-        1,
-        3
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        0,
-        1,
-        1,
-        2,
-        1,
-        0,
-        3
-      ]
-    },
-    "exp_home": 1.08,
-    "exp_away": 1.7,
-    "exp_total": 2.78,
-    "home_under15": 71,
-    "away_under15": 49,
-    "home_under25": 90,
-    "away_under25": 76
-  },
-  {
-    "match_id": "mt_644033499",
-    "league": "Ligue 2",
-    "date": "2026-11-20T19:00:00.000Z",
-    "date_key": "2026-11-20",
-    "home_team": "Red Star FC",
-    "away_team": "Pau FC",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        1,
-        3,
-        3,
-        0,
-        1,
-        1,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        0,
-        2,
-        3,
-        2,
-        2,
-        3,
-        0
-      ]
-    },
-    "exp_home": 1.17,
-    "exp_away": 1.79,
-    "exp_total": 2.96,
-    "home_under15": 67,
-    "away_under15": 47,
-    "home_under25": 89,
-    "away_under25": 73
-  },
-  {
-    "match_id": "mt_022544232",
-    "league": "Ligue 2",
-    "date": "2026-11-20T19:00:00.000Z",
-    "date_key": "2026-11-20",
-    "home_team": "Nancy",
-    "away_team": "Dijon",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 1.0,
-      "goals_list": [
-        1,
-        4,
-        1,
-        2,
-        1,
-        4,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.29,
-      "avg_conceded": 1.71,
-      "goals_list": [
-        3,
-        2,
-        4,
-        2,
-        1,
-        3,
-        1
-      ]
-    },
-    "exp_home": 2.15,
-    "exp_away": 1.64,
-    "exp_total": 3.79,
-    "home_under15": 37,
-    "away_under15": 51,
-    "home_under25": 64,
-    "away_under25": 77
-  },
-  {
-    "match_id": "mt_733561793",
-    "league": "Serie A",
-    "date": "2026-11-21T14:00:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Como",
-    "away_team": "Cagliari",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 0.86,
-      "goals_list": [
-        0,
-        0,
-        3,
-        2,
-        3,
-        1,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.86,
-      "avg_conceded": 1.86,
-      "goals_list": [
-        1,
-        1,
-        0,
-        0,
-        2,
-        1,
-        1
-      ]
-    },
-    "exp_home": 1.56,
-    "exp_away": 0.74,
-    "exp_total": 2.3,
-    "home_under15": 54,
-    "away_under15": 83,
-    "home_under25": 79,
-    "away_under25": 96
-  },
-  {
-    "match_id": "mt_899755907",
-    "league": "Ligue 2",
-    "date": "2026-11-21T19:00:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Stade de Reims",
-    "away_team": "Saint-\u00c9tienne",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        2,
-        1,
-        0,
-        4,
-        1,
-        2,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.0,
-      "goals_list": [
-        1,
-        2,
-        2,
-        1,
-        1,
-        0,
-        2
-      ]
-    },
-    "exp_home": 1.32,
-    "exp_away": 1.17,
-    "exp_total": 2.49,
-    "home_under15": 62,
-    "away_under15": 67,
-    "home_under25": 85,
-    "away_under25": 89
-  },
-  {
-    "match_id": "mt_644908691",
-    "league": "Serie A",
-    "date": "2026-11-21T19:45:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Napoli",
-    "away_team": "Torino",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        3,
-        0,
-        3,
-        4,
-        0,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.57,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        1,
-        2,
-        3,
-        3,
-        1,
-        0,
-        1
-      ]
-    },
-    "exp_home": 1.57,
-    "exp_away": 1.38,
-    "exp_total": 2.95,
-    "home_under15": 53,
-    "away_under15": 60,
-    "home_under25": 79,
-    "away_under25": 84
-  },
-  {
-    "match_id": "mt_511922148",
-    "league": "Ligue 2",
-    "date": "2026-11-21T13:00:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Stade Lavallois",
-    "away_team": "Montpellier",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.86,
-      "goals_list": [
-        2,
-        1,
-        2,
-        3,
-        0,
-        1,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        1,
-        1,
-        2,
-        3,
-        2,
-        3,
-        2
-      ]
-    },
-    "exp_home": 0.87,
-    "exp_away": 2.29,
-    "exp_total": 3.16,
-    "home_under15": 78,
-    "away_under15": 33,
-    "home_under25": 94,
-    "away_under25": 60
-  },
-  {
-    "match_id": "mt_466829489",
-    "league": "Serie A",
-    "date": "2026-11-21T17:00:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Parma",
-    "away_team": "Roma",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        2,
-        0,
-        0,
-        1,
-        0,
-        3,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.71,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        2,
-        0,
-        2,
-        3,
-        4,
-        5,
-        3
-      ]
-    },
-    "exp_home": 1.03,
-    "exp_away": 2.38,
-    "exp_total": 3.41,
-    "home_under15": 72,
-    "away_under15": 31,
-    "home_under25": 91,
-    "away_under25": 57
-  },
-  {
-    "match_id": "mt_988230914",
-    "league": "Serie A",
-    "date": "2026-11-21T14:00:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "Lazio",
-    "away_team": "Lecce",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.71,
-      "avg_conceded": 0.86,
-      "goals_list": [
-        2,
-        3,
-        3,
-        2,
-        6,
-        2,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        0,
-        1,
-        3,
-        0,
-        1,
-        1,
-        1
-      ]
-    },
-    "exp_home": 2.98,
-    "exp_away": 0.81,
-    "exp_total": 3.79,
-    "home_under15": 20,
-    "away_under15": 81,
-    "home_under25": 43,
-    "away_under25": 95
-  },
-  {
-    "match_id": "mt_206963331",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-21T17:30:00.000Z",
-    "date_key": "2026-11-21",
-    "home_team": "PS Kalamata",
-    "away_team": "AEK Athens",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.86,
-      "goals_list": [
-        3,
-        0,
-        3,
-        4,
-        0,
-        1,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.57,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        5,
-        1,
-        2,
-        3,
-        5,
-        0,
-        2
-      ]
-    },
-    "exp_home": 1.07,
-    "exp_away": 2.78,
-    "exp_total": 3.85,
-    "home_under15": 71,
-    "away_under15": 23,
-    "home_under25": 91,
-    "away_under25": 47
-  },
-  {
-    "match_id": "mt_981610009",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-22T14:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "APO Levadiakos",
-    "away_team": "Atromitos Athens",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        3,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        3,
-        0
-      ]
-    },
-    "exp_home": 0.78,
-    "exp_away": 0.8,
-    "exp_total": 1.58,
-    "home_under15": 82,
-    "away_under15": 81,
-    "home_under25": 96,
-    "away_under25": 95
-  },
-  {
-    "match_id": "mt_200713267",
-    "league": "Serie A",
-    "date": "2026-11-22T11:30:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Juventus",
-    "away_team": "Venezia",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        2,
-        1,
-        0,
-        2,
-        0,
-        2,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        0,
-        1,
-        1,
-        0,
-        0,
-        0,
-        2
-      ]
-    },
-    "exp_home": 1.3,
-    "exp_away": 0.71,
-    "exp_total": 2.01,
-    "home_under15": 63,
-    "away_under15": 84,
-    "home_under25": 86,
-    "away_under25": 96
-  },
-  {
-    "match_id": "mt_378085508",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-22T15:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Panetolikos",
-    "away_team": "NPS Volos",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 0.14,
-      "avg_conceded": 2.71,
-      "goals_list": [
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.71,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        1,
-        1,
-        2,
-        0,
-        0,
-        0,
-        1
-      ]
-    },
-    "exp_home": 0.72,
-    "exp_away": 1.54,
-    "exp_total": 2.26,
-    "home_under15": 84,
-    "away_under15": 54,
-    "home_under25": 96,
-    "away_under25": 80
-  },
-  {
-    "match_id": "mt_467579950",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-22T17:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Olympiacos FC",
-    "away_team": "Iraklis 1908",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.86,
-      "avg_conceded": 0.57,
-      "goals_list": [
-        0,
-        1,
-        1,
-        2,
-        5,
-        3,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        0,
-        2,
-        1,
-        2,
-        1,
-        1
-      ]
-    },
-    "exp_home": 1.65,
-    "exp_away": 0.72,
-    "exp_total": 2.37,
-    "home_under15": 51,
-    "away_under15": 84,
-    "home_under25": 77,
-    "away_under25": 96
-  },
-  {
-    "match_id": "mt_643138814",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-22T15:30:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Panathinaikos",
-    "away_team": "OFI Crete",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 0.43,
-      "goals_list": [
-        3,
-        1,
-        0,
-        5,
-        1,
-        2,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        1,
-        2,
-        0,
-        3,
-        2,
-        1,
-        0
-      ]
-    },
-    "exp_home": 1.88,
-    "exp_away": 0.69,
-    "exp_total": 2.57,
-    "home_under15": 44,
-    "away_under15": 85,
-    "home_under25": 71,
-    "away_under25": 97
-  },
-  {
-    "match_id": "mt_155684100",
-    "league": "Serie A",
-    "date": "2026-11-22T14:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Bologna",
-    "away_team": "Udinese",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        2,
-        1,
-        2,
-        4,
-        2,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        0,
-        1,
-        0,
-        0,
-        0,
-        2,
-        1
-      ]
-    },
-    "exp_home": 2.36,
-    "exp_away": 0.77,
-    "exp_total": 3.13,
-    "home_under15": 32,
-    "away_under15": 82,
-    "home_under25": 58,
-    "away_under25": 96
-  },
-  {
-    "match_id": "mt_512726676",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-22T17:30:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "PAOK",
-    "away_team": "AE Kifisia",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        2,
-        3,
-        1,
-        2,
-        1,
-        2,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.86,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        0,
-        2,
-        2,
-        1,
-        3,
-        2,
-        3
-      ]
-    },
-    "exp_home": 1.55,
-    "exp_away": 1.65,
-    "exp_total": 3.2,
-    "home_under15": 54,
-    "away_under15": 51,
-    "home_under25": 80,
-    "away_under25": 77
-  },
-  {
-    "match_id": "mt_022357040",
-    "league": "Serie A",
-    "date": "2026-11-22T14:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Sassuolo",
-    "away_team": "Genoa",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 3.14,
-      "goals_list": [
-        1,
-        1,
-        2,
-        0,
-        2,
-        2,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        1,
-        2,
-        0,
-        1,
-        2,
-        2,
-        1
-      ]
-    },
-    "exp_home": 1.02,
-    "exp_away": 2.34,
-    "exp_total": 3.36,
-    "home_under15": 73,
-    "away_under15": 32,
-    "home_under25": 92,
-    "away_under25": 59
-  },
-  {
-    "match_id": "mt_899072853",
-    "league": "Serie A",
-    "date": "2026-11-22T19:45:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Atalanta",
-    "away_team": "Inter",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        0,
-        3,
-        2,
-        4,
-        2,
-        0,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.14,
-      "avg_conceded": 1.0,
-      "goals_list": [
-        2,
-        3,
-        3,
-        2,
-        2,
-        1,
-        2
-      ]
-    },
-    "exp_home": 1.25,
-    "exp_away": 2.47,
-    "exp_total": 3.72,
-    "home_under15": 64,
-    "away_under15": 29,
-    "home_under25": 87,
-    "away_under25": 55
-  },
-  {
-    "match_id": "mt_899072809",
-    "league": "Serie A",
-    "date": "2026-11-22T17:00:00.000Z",
-    "date_key": "2026-11-22",
-    "home_team": "Milan",
-    "away_team": "Frosinone",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.29,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        3,
-        1,
-        3,
-        2,
-        2,
-        3,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.43,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        2,
-        0,
-        4,
-        4,
-        5,
-        2,
-        0
-      ]
-    },
-    "exp_home": 2.09,
-    "exp_away": 1.91,
-    "exp_total": 4.0,
-    "home_under15": 38,
-    "away_under15": 43,
-    "home_under25": 65,
-    "away_under25": 70
-  },
-  {
     "match_id": "mt_645899156",
     "league": "Ligue 2",
     "date": "2026-11-23T19:45:00.000Z",
@@ -980,9 +34,9 @@
         3
       ]
     },
-    "exp_home": 1.32,
+    "exp_home": 1.31,
     "exp_away": 0.9,
-    "exp_total": 2.22,
+    "exp_total": 2.21,
     "home_under15": 62,
     "away_under15": 77,
     "home_under25": 85,
@@ -1023,56 +77,13 @@
         3
       ]
     },
-    "exp_home": 0.9,
-    "exp_away": 1.46,
-    "exp_total": 2.36,
-    "home_under15": 77,
+    "exp_home": 0.89,
+    "exp_away": 1.45,
+    "exp_total": 2.34,
+    "home_under15": 78,
     "away_under15": 57,
     "home_under25": 94,
     "away_under25": 82
-  },
-  {
-    "match_id": "mt_378085557",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-23T15:00:00.000Z",
-    "date_key": "2026-11-23",
-    "home_team": "Asteras Aktor",
-    "away_team": "Aris Thessaloniki",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.71,
-      "goals_list": [
-        1,
-        2,
-        2,
-        1,
-        0,
-        1,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.57,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        0,
-        0,
-        3,
-        2,
-        3,
-        0,
-        3
-      ]
-    },
-    "exp_home": 1.17,
-    "exp_away": 1.78,
-    "exp_total": 2.95,
-    "home_under15": 67,
-    "away_under15": 47,
-    "home_under25": 89,
-    "away_under25": 74
   },
   {
     "match_id": "mt_511496529",
@@ -1109,10 +120,10 @@
         2
       ]
     },
-    "exp_home": 1.89,
-    "exp_away": 2.0,
-    "exp_total": 3.89,
-    "home_under15": 44,
+    "exp_home": 1.86,
+    "exp_away": 1.98,
+    "exp_total": 3.84,
+    "home_under15": 45,
     "away_under15": 41,
     "home_under25": 71,
     "away_under25": 68
@@ -1127,38 +138,38 @@
     "home_form": {
       "n_games": 7,
       "avg_scored": 0.57,
-      "avg_conceded": 1.14,
+      "avg_conceded": 1.29,
       "goals_list": [
-        0,
         1,
         2,
         0,
         1,
+        0,
         0,
         0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.57,
-      "avg_conceded": 1.0,
+      "avg_scored": 1.29,
+      "avg_conceded": 1.14,
       "goals_list": [
-        2,
         2,
         2,
         1,
         1,
         3,
+        0,
         0
       ]
     },
-    "exp_home": 0.66,
-    "exp_away": 1.36,
-    "exp_total": 2.02,
-    "home_under15": 86,
-    "away_under15": 61,
-    "home_under25": 97,
-    "away_under25": 84
+    "exp_home": 0.72,
+    "exp_away": 1.28,
+    "exp_total": 2.0,
+    "home_under15": 84,
+    "away_under15": 63,
+    "home_under25": 96,
+    "away_under25": 86
   },
   {
     "match_id": "mt_378666737",
@@ -1169,39 +180,39 @@
     "away_team": "Ascoli",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 0.86,
-      "avg_conceded": 1.29,
+      "avg_scored": 1.0,
+      "avg_conceded": 1.14,
       "goals_list": [
-        1,
         0,
         1,
         0,
         2,
         1,
-        1
+        1,
+        2
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.86,
-      "avg_conceded": 0.57,
+      "avg_scored": 1.71,
+      "avg_conceded": 0.71,
       "goals_list": [
-        3,
         0,
         1,
         6,
         2,
         0,
-        1
+        1,
+        2
       ]
     },
-    "exp_home": 0.6,
-    "exp_away": 1.67,
-    "exp_total": 2.27,
-    "home_under15": 88,
-    "away_under15": 50,
-    "home_under25": 98,
-    "away_under25": 77
+    "exp_home": 0.74,
+    "exp_away": 1.45,
+    "exp_total": 2.19,
+    "home_under15": 83,
+    "away_under15": 57,
+    "home_under25": 96,
+    "away_under25": 82
   },
   {
     "match_id": "mt_739444375",
@@ -1212,102 +223,16 @@
     "away_team": "Catanzaro",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        1,
-        1,
-        3,
-        1,
-        0,
-        2,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 2.29,
-      "goals_list": [
-        1,
-        1,
-        2,
-        1,
-        1,
-        1,
-        0
-      ]
-    },
-    "exp_home": 1.97,
-    "exp_away": 0.74,
-    "exp_total": 2.71,
-    "home_under15": 41,
-    "away_under15": 83,
-    "home_under25": 68,
-    "away_under25": 96
-  },
-  {
-    "match_id": "mt_150999517",
-    "league": "Serie B",
-    "date": "2026-11-24T19:00:00.000Z",
-    "date_key": "2026-11-24",
-    "home_team": "L.R. Vicenza",
-    "away_team": "Carrarese",
-    "home_form": {
-      "n_games": 7,
       "avg_scored": 1.14,
-      "avg_conceded": 2.29,
-      "goals_list": [
-        1,
-        0,
-        2,
-        2,
-        1,
-        1,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        0,
-        2,
-        2,
-        1,
-        2,
-        0,
-        0
-      ]
-    },
-    "exp_home": 1.18,
-    "exp_away": 1.66,
-    "exp_total": 2.84,
-    "home_under15": 67,
-    "away_under15": 51,
-    "home_under25": 88,
-    "away_under25": 77
-  },
-  {
-    "match_id": "mt_643222462",
-    "league": "Serie B",
-    "date": "2026-11-24T19:00:00.000Z",
-    "date_key": "2026-11-24",
-    "home_team": "Benevento",
-    "away_team": "Empoli",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.43,
       "avg_conceded": 0.86,
       "goals_list": [
         1,
-        2,
-        2,
         3,
         1,
         0,
-        1
+        2,
+        1,
+        0
       ]
     },
     "away_form": {
@@ -1318,18 +243,18 @@
         1,
         2,
         1,
-        0,
         1,
-        2,
-        2
+        1,
+        0,
+        3
       ]
     },
-    "exp_home": 2.01,
+    "exp_home": 1.72,
     "exp_away": 0.98,
-    "exp_total": 2.99,
-    "home_under15": 40,
+    "exp_total": 2.7,
+    "home_under15": 49,
     "away_under15": 74,
-    "home_under25": 67,
+    "home_under25": 75,
     "away_under25": 92
   },
   {
@@ -1341,38 +266,124 @@
     "away_team": "S\u00fcdtirol",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 2.43,
-      "avg_conceded": 1.29,
+      "avg_scored": 2.29,
+      "avg_conceded": 1.57,
       "goals_list": [
-        2,
         4,
         2,
         2,
         3,
         3,
+        1,
+        1
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 0.71,
+      "avg_conceded": 1.29,
+      "goals_list": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        2,
+        1
+      ]
+    },
+    "exp_home": 1.97,
+    "exp_away": 1.02,
+    "exp_total": 2.99,
+    "home_under15": 41,
+    "away_under15": 73,
+    "home_under25": 68,
+    "away_under25": 92
+  },
+  {
+    "match_id": "mt_150999517",
+    "league": "Serie B",
+    "date": "2026-11-24T19:00:00.000Z",
+    "date_key": "2026-11-24",
+    "home_team": "L.R. Vicenza",
+    "away_team": "Carrarese",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.29,
+      "avg_conceded": 2.29,
+      "goals_list": [
+        0,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.14,
+      "avg_conceded": 1.14,
+      "goals_list": [
+        2,
+        2,
+        1,
+        2,
+        0,
+        0,
+        1
+      ]
+    },
+    "exp_home": 1.18,
+    "exp_away": 1.82,
+    "exp_total": 3.0,
+    "home_under15": 67,
+    "away_under15": 46,
+    "home_under25": 88,
+    "away_under25": 73
+  },
+  {
+    "match_id": "mt_643222462",
+    "league": "Serie B",
+    "date": "2026-11-24T19:00:00.000Z",
+    "date_key": "2026-11-24",
+    "home_team": "Benevento",
+    "away_team": "Empoli",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.43,
+      "avg_conceded": 1.29,
+      "goals_list": [
+        2,
+        2,
+        3,
+        1,
+        0,
+        1,
         1
       ]
     },
     "away_form": {
       "n_games": 7,
       "avg_scored": 1.14,
-      "avg_conceded": 1.43,
+      "avg_conceded": 2.0,
       "goals_list": [
-        4,
-        0,
-        0,
+        2,
         1,
         0,
         1,
-        2
+        2,
+        2,
+        0
       ]
     },
-    "exp_home": 2.23,
+    "exp_home": 1.91,
     "exp_away": 1.18,
-    "exp_total": 3.41,
-    "home_under15": 35,
+    "exp_total": 3.09,
+    "home_under15": 43,
     "away_under15": 67,
-    "home_under25": 61,
+    "home_under25": 70,
     "away_under25": 88
   },
   {
@@ -1384,39 +395,39 @@
     "away_team": "Arezzo",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.14,
+      "avg_scored": 0.86,
+      "avg_conceded": 1.43,
       "goals_list": [
-        2,
         3,
         0,
         1,
         0,
         1,
-        0
+        0,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
       "avg_scored": 0.57,
-      "avg_conceded": 1.57,
+      "avg_conceded": 1.14,
       "goals_list": [
-        1,
         0,
         2,
         0,
         1,
         0,
-        0
+        0,
+        1
       ]
     },
-    "exp_home": 1.24,
-    "exp_away": 0.72,
-    "exp_total": 1.96,
-    "home_under15": 65,
-    "away_under15": 84,
-    "home_under25": 87,
-    "away_under25": 96
+    "exp_home": 0.9,
+    "exp_away": 0.84,
+    "exp_total": 1.74,
+    "home_under15": 77,
+    "away_under15": 79,
+    "home_under25": 94,
+    "away_under25": 95
   },
   {
     "match_id": "mt_895333985",
@@ -1428,38 +439,38 @@
     "home_form": {
       "n_games": 7,
       "avg_scored": 1.29,
-      "avg_conceded": 0.71,
+      "avg_conceded": 0.86,
       "goals_list": [
-        0,
         0,
         1,
         0,
         2,
         2,
-        4
+        4,
+        0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.43,
-      "avg_conceded": 1.14,
+      "avg_scored": 1.86,
+      "avg_conceded": 0.86,
       "goals_list": [
-        1,
         4,
         1,
         0,
         1,
         2,
-        1
+        1,
+        4
       ]
     },
-    "exp_home": 1.18,
-    "exp_away": 0.95,
-    "exp_total": 2.13,
-    "home_under15": 67,
-    "away_under15": 75,
-    "home_under25": 88,
-    "away_under25": 93
+    "exp_home": 0.98,
+    "exp_away": 1.28,
+    "exp_total": 2.26,
+    "home_under15": 74,
+    "away_under15": 63,
+    "home_under25": 92,
+    "away_under25": 86
   },
   {
     "match_id": "mt_981777899",
@@ -1471,29 +482,29 @@
     "home_form": {
       "n_games": 7,
       "avg_scored": 1.14,
-      "avg_conceded": 1.29,
+      "avg_conceded": 1.14,
       "goals_list": [
-        1,
         0,
         1,
         1,
         2,
         1,
-        2
+        2,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.14,
+      "avg_scored": 1.29,
       "avg_conceded": 1.43,
       "goals_list": [
-        2,
         1,
         1,
         1,
         0,
         2,
-        1
+        1,
+        3
       ]
     },
     "exp_home": 1.27,
@@ -1513,39 +524,39 @@
     "away_team": "Modena",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 1.57,
+      "avg_scored": 1.86,
+      "avg_conceded": 1.29,
       "goals_list": [
-        2,
         3,
         3,
         1,
         3,
         0,
-        2
+        2,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
       "avg_scored": 2.0,
-      "avg_conceded": 1.0,
+      "avg_conceded": 0.86,
       "goals_list": [
-        2,
         3,
         1,
         3,
         2,
         1,
+        2,
         2
       ]
     },
-    "exp_home": 1.5,
-    "exp_away": 2.04,
-    "exp_total": 3.54,
-    "home_under15": 56,
-    "away_under15": 40,
-    "home_under25": 81,
-    "away_under25": 67
+    "exp_home": 1.28,
+    "exp_away": 1.77,
+    "exp_total": 3.05,
+    "home_under15": 63,
+    "away_under15": 47,
+    "home_under25": 86,
+    "away_under25": 74
   },
   {
     "match_id": "mt_899072865",
@@ -1557,15 +568,15 @@
     "home_form": {
       "n_games": 7,
       "avg_scored": 0.57,
-      "avg_conceded": 1.43,
+      "avg_conceded": 1.71,
       "goals_list": [
-        0,
         1,
         1,
         0,
         0,
         0,
-        2
+        2,
+        0
       ]
     },
     "away_form": {
@@ -1573,22 +584,22 @@
       "avg_scored": 2.0,
       "avg_conceded": 1.29,
       "goals_list": [
-        1,
         2,
         1,
         2,
         4,
         2,
-        2
+        2,
+        1
       ]
     },
-    "exp_home": 0.77,
-    "exp_away": 1.77,
-    "exp_total": 2.54,
+    "exp_home": 0.76,
+    "exp_away": 1.97,
+    "exp_total": 2.73,
     "home_under15": 82,
-    "away_under15": 47,
+    "away_under15": 41,
     "home_under25": 96,
-    "away_under25": 74
+    "away_under25": 68
   },
   {
     "match_id": "mt_739444910",
@@ -1599,39 +610,39 @@
     "away_team": "Juve Stabia",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.29,
+      "avg_scored": 1.14,
+      "avg_conceded": 1.14,
       "goals_list": [
-        0,
         2,
         2,
         1,
         2,
         0,
-        0
+        0,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 0.71,
+      "avg_scored": 1.14,
+      "avg_conceded": 0.86,
       "goals_list": [
-        1,
         1,
         3,
         1,
         0,
         2,
-        1
+        1,
+        0
       ]
     },
-    "exp_home": 0.74,
-    "exp_away": 1.28,
-    "exp_total": 2.02,
-    "home_under15": 83,
-    "away_under15": 63,
-    "home_under25": 96,
-    "away_under25": 86
+    "exp_home": 0.9,
+    "exp_away": 1.09,
+    "exp_total": 1.99,
+    "home_under15": 77,
+    "away_under15": 70,
+    "home_under25": 94,
+    "away_under25": 90
   },
   {
     "match_id": "mt_895333520",
@@ -1642,168 +653,39 @@
     "away_team": "Virtus Entella",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.86,
-      "avg_conceded": 0.57,
+      "avg_scored": 1.71,
+      "avg_conceded": 0.71,
       "goals_list": [
-        3,
         0,
         1,
         6,
         2,
         0,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        0,
-        1,
-        2,
-        0,
-        1,
-        0,
-        0
-      ]
-    },
-    "exp_home": 1.54,
-    "exp_away": 0.48,
-    "exp_total": 2.02,
-    "home_under15": 54,
-    "away_under15": 92,
-    "home_under25": 80,
-    "away_under25": 99
-  },
-  {
-    "match_id": "mt_467579906",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-28T15:00:00.000Z",
-    "date_key": "2026-11-28",
-    "home_team": "Iraklis 1908",
-    "away_team": "Panetolikos",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        0,
-        2,
-        1,
-        2,
-        1,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.14,
-      "avg_conceded": 2.71,
-      "goals_list": [
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    "exp_home": 2.05,
-    "exp_away": 0.49,
-    "exp_total": 2.54,
-    "home_under15": 39,
-    "away_under15": 91,
-    "home_under25": 66,
-    "away_under25": 99
-  },
-  {
-    "match_id": "mt_200713278",
-    "league": "Serie A",
-    "date": "2026-11-28T19:45:00.000Z",
-    "date_key": "2026-11-28",
-    "home_team": "Inter",
-    "away_team": "Genoa",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.14,
-      "avg_conceded": 1.0,
-      "goals_list": [
-        2,
-        3,
-        3,
-        2,
-        2,
         1,
         2
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        1,
-        2,
-        0,
-        1,
-        2,
-        2,
-        1
-      ]
-    },
-    "exp_home": 1.59,
-    "exp_away": 1.03,
-    "exp_total": 2.62,
-    "home_under15": 53,
-    "away_under15": 72,
-    "home_under25": 79,
-    "away_under25": 91
-  },
-  {
-    "match_id": "mt_981777160",
-    "league": "Serie B",
-    "date": "2026-11-28T16:15:00.000Z",
-    "date_key": "2026-11-28",
-    "home_team": "L.R. Vicenza",
-    "away_team": "Cesena",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 2.29,
-      "goals_list": [
-        1,
-        0,
-        2,
-        2,
-        1,
-        1,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.86,
+      "avg_scored": 0.57,
       "avg_conceded": 1.29,
       "goals_list": [
         1,
-        0,
-        1,
-        0,
         2,
+        0,
         1,
-        1
+        0,
+        0,
+        0
       ]
     },
-    "exp_home": 1.18,
-    "exp_away": 1.51,
-    "exp_total": 2.69,
-    "home_under15": 67,
-    "away_under15": 55,
-    "home_under25": 88,
-    "away_under25": 81
+    "exp_home": 1.57,
+    "exp_away": 0.54,
+    "exp_total": 2.11,
+    "home_under15": 53,
+    "away_under15": 90,
+    "home_under25": 79,
+    "away_under25": 98
   },
   {
     "match_id": "mt_150304438",
@@ -1814,16 +696,16 @@
     "away_team": "Asteras Aktor",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 0.71,
-      "avg_conceded": 2.14,
+      "avg_scored": 0.57,
+      "avg_conceded": 1.86,
       "goals_list": [
-        1,
         1,
         2,
         0,
         0,
         0,
-        1
+        1,
+        0
       ]
     },
     "away_form": {
@@ -1840,33 +722,33 @@
         1
       ]
     },
-    "exp_home": 1.07,
-    "exp_away": 1.7,
-    "exp_total": 2.77,
-    "home_under15": 71,
-    "away_under15": 49,
-    "home_under25": 91,
-    "away_under25": 76
+    "exp_home": 0.96,
+    "exp_away": 1.53,
+    "exp_total": 2.49,
+    "home_under15": 75,
+    "away_under15": 55,
+    "home_under25": 93,
+    "away_under25": 80
   },
   {
-    "match_id": "mt_024111481",
-    "league": "Serie B",
-    "date": "2026-11-28T18:30:00.000Z",
+    "match_id": "mt_200713278",
+    "league": "Serie A",
+    "date": "2026-11-28T19:45:00.000Z",
     "date_key": "2026-11-28",
-    "home_team": "Palermo",
-    "away_team": "Benevento",
+    "home_team": "Inter",
+    "away_team": "Genoa",
     "home_form": {
       "n_games": 7,
       "avg_scored": 2.43,
       "avg_conceded": 1.29,
       "goals_list": [
-        2,
-        4,
-        2,
-        2,
         3,
         3,
-        1
+        2,
+        2,
+        1,
+        2,
+        4
       ]
     },
     "away_form": {
@@ -1874,22 +756,108 @@
       "avg_scored": 1.43,
       "avg_conceded": 0.86,
       "goals_list": [
+        2,
+        0,
         1,
         2,
         2,
-        3,
         1,
+        2
+      ]
+    },
+    "exp_home": 1.48,
+    "exp_away": 1.28,
+    "exp_total": 2.76,
+    "home_under15": 56,
+    "away_under15": 63,
+    "home_under25": 81,
+    "away_under25": 86
+  },
+  {
+    "match_id": "mt_467579906",
+    "league": "Stoiximan Super League",
+    "date": "2026-11-28T15:00:00.000Z",
+    "date_key": "2026-11-28",
+    "home_team": "Iraklis 1908",
+    "away_team": "Panetolikos",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.29,
+      "avg_conceded": 2.0,
+      "goals_list": [
+        0,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 0.29,
+      "avg_conceded": 2.29,
+      "goals_list": [
+        1,
+        0,
+        0,
+        0,
+        0,
         0,
         1
       ]
     },
-    "exp_home": 1.59,
-    "exp_away": 1.37,
-    "exp_total": 2.96,
-    "home_under15": 53,
-    "away_under15": 60,
-    "home_under25": 79,
-    "away_under25": 84
+    "exp_home": 1.95,
+    "exp_away": 0.82,
+    "exp_total": 2.77,
+    "home_under15": 42,
+    "away_under15": 80,
+    "home_under25": 69,
+    "away_under25": 95
+  },
+  {
+    "match_id": "mt_981777160",
+    "league": "Serie B",
+    "date": "2026-11-28T16:15:00.000Z",
+    "date_key": "2026-11-28",
+    "home_team": "L.R. Vicenza",
+    "away_team": "Cesena",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.29,
+      "avg_conceded": 2.29,
+      "goals_list": [
+        0,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.0,
+      "avg_conceded": 1.14,
+      "goals_list": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        2
+      ]
+    },
+    "exp_home": 1.18,
+    "exp_away": 1.66,
+    "exp_total": 2.84,
+    "home_under15": 67,
+    "away_under15": 51,
+    "home_under25": 88,
+    "away_under25": 77
   },
   {
     "match_id": "mt_206555632",
@@ -1900,39 +868,39 @@
     "away_team": "Hellas Verona",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 2.14,
+      "avg_scored": 1.14,
+      "avg_conceded": 2.0,
       "goals_list": [
-        1,
         2,
         1,
         0,
         1,
         2,
-        2
+        2,
+        0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.57,
-      "avg_conceded": 1.0,
+      "avg_scored": 1.29,
+      "avg_conceded": 1.14,
       "goals_list": [
-        2,
         2,
         2,
         1,
         1,
         3,
+        0,
         0
       ]
     },
-    "exp_home": 1.08,
-    "exp_away": 2.16,
-    "exp_total": 3.24,
-    "home_under15": 71,
-    "away_under15": 36,
+    "exp_home": 1.09,
+    "exp_away": 1.77,
+    "exp_total": 2.86,
+    "home_under15": 70,
+    "away_under15": 47,
     "home_under25": 90,
-    "away_under25": 63
+    "away_under25": 74
   },
   {
     "match_id": "mt_644908652",
@@ -1943,82 +911,82 @@
     "away_team": "Lazio",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.57,
+      "avg_scored": 1.43,
       "avg_conceded": 1.43,
       "goals_list": [
-        1,
         2,
         3,
         3,
         1,
         0,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.71,
-      "avg_conceded": 0.86,
-      "goals_list": [
-        2,
-        3,
-        3,
-        2,
-        6,
-        2,
-        1
-      ]
-    },
-    "exp_home": 1.08,
-    "exp_away": 2.23,
-    "exp_total": 3.31,
-    "home_under15": 71,
-    "away_under15": 35,
-    "home_under25": 90,
-    "away_under25": 61
-  },
-  {
-    "match_id": "mt_155684166",
-    "league": "Serie A",
-    "date": "2026-11-28T14:00:00.000Z",
-    "date_key": "2026-11-28",
-    "home_team": "Frosinone",
-    "away_team": "Parma",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.43,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        2,
-        0,
-        4,
-        4,
-        5,
-        2,
+        1,
         0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.0,
+      "avg_scored": 2.86,
+      "avg_conceded": 0.86,
+      "goals_list": [
+        3,
+        3,
+        2,
+        6,
+        2,
+        1,
+        3
+      ]
+    },
+    "exp_home": 1.0,
+    "exp_away": 2.31,
+    "exp_total": 3.31,
+    "home_under15": 74,
+    "away_under15": 33,
+    "home_under25": 92,
+    "away_under25": 59
+  },
+  {
+    "match_id": "mt_024111481",
+    "league": "Serie B",
+    "date": "2026-11-28T18:30:00.000Z",
+    "date_key": "2026-11-28",
+    "home_team": "Palermo",
+    "away_team": "Benevento",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 2.29,
       "avg_conceded": 1.57,
       "goals_list": [
+        4,
         2,
-        0,
-        0,
-        1,
-        0,
+        2,
         3,
+        3,
+        1,
         1
       ]
     },
-    "exp_home": 2.19,
-    "exp_away": 1.18,
-    "exp_total": 3.37,
-    "home_under15": 36,
-    "away_under15": 67,
-    "home_under25": 63,
-    "away_under25": 88
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.43,
+      "avg_conceded": 1.29,
+      "goals_list": [
+        2,
+        2,
+        3,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "exp_home": 1.97,
+    "exp_away": 1.59,
+    "exp_total": 3.56,
+    "home_under15": 41,
+    "away_under15": 53,
+    "home_under25": 68,
+    "away_under25": 79
   },
   {
     "match_id": "mt_981610070",
@@ -2030,167 +998,81 @@
     "home_form": {
       "n_games": 7,
       "avg_scored": 1.86,
-      "avg_conceded": 1.29,
+      "avg_conceded": 1.86,
       "goals_list": [
-        0,
         2,
         2,
         1,
         3,
         2,
-        3
+        3,
+        0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.71,
+      "avg_scored": 1.29,
       "avg_conceded": 1.86,
       "goals_list": [
-        3,
         0,
         3,
         4,
         0,
         1,
-        1
-      ]
-    },
-    "exp_home": 2.15,
-    "exp_away": 1.55,
-    "exp_total": 3.7,
-    "home_under15": 37,
-    "away_under15": 54,
-    "home_under25": 64,
-    "away_under25": 80
-  },
-  {
-    "match_id": "mt_512726687",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-29T15:30:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "OFI Crete",
-    "away_team": "APO Levadiakos",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        1,
-        2,
-        0,
-        3,
-        2,
         1,
         0
       ]
     },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 0.71,
-      "goals_list": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        3,
-        1
-      ]
-    },
-    "exp_home": 0.87,
-    "exp_away": 0.84,
-    "exp_total": 1.71,
-    "home_under15": 78,
-    "away_under15": 79,
-    "home_under25": 94,
-    "away_under25": 95
+    "exp_home": 2.17,
+    "exp_away": 1.66,
+    "exp_total": 3.83,
+    "home_under15": 36,
+    "away_under15": 51,
+    "home_under25": 63,
+    "away_under25": 77
   },
   {
-    "match_id": "mt_377145316",
+    "match_id": "mt_155684166",
     "league": "Serie A",
-    "date": "2026-11-29T19:45:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "Como",
-    "away_team": "Juventus",
+    "date": "2026-11-28T14:00:00.000Z",
+    "date_key": "2026-11-28",
+    "home_team": "Frosinone",
+    "away_team": "Parma",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 0.86,
+      "avg_scored": 2.29,
+      "avg_conceded": 2.29,
       "goals_list": [
         0,
-        0,
-        3,
-        2,
-        3,
-        1,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 1.14,
-      "goals_list": [
-        2,
-        1,
-        0,
+        4,
+        4,
+        5,
         2,
         0,
-        2,
-        2
-      ]
-    },
-    "exp_home": 1.11,
-    "exp_away": 0.94,
-    "exp_total": 2.05,
-    "home_under15": 70,
-    "away_under15": 76,
-    "home_under25": 90,
-    "away_under25": 93
-  },
-  {
-    "match_id": "mt_467000756",
-    "league": "Serie B",
-    "date": "2026-11-29T16:15:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "Sampdoria",
-    "away_team": "Cremonese",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.43,
-      "goals_list": [
-        2,
-        1,
-        1,
-        1,
-        0,
-        2,
         1
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.29,
-      "avg_conceded": 0.71,
+      "avg_scored": 0.86,
+      "avg_conceded": 2.14,
       "goals_list": [
         0,
         0,
         1,
         0,
-        2,
-        2,
-        4
+        3,
+        1,
+        1
       ]
     },
-    "exp_home": 0.81,
-    "exp_away": 1.37,
-    "exp_total": 2.18,
-    "home_under15": 81,
-    "away_under15": 60,
-    "home_under25": 95,
-    "away_under25": 84
+    "exp_home": 2.58,
+    "exp_away": 1.42,
+    "exp_total": 4.0,
+    "home_under15": 27,
+    "away_under15": 58,
+    "home_under25": 52,
+    "away_under25": 83
   },
   {
     "match_id": "mt_643222313",
@@ -2201,39 +1083,125 @@
     "away_team": "Mantova",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.43,
+      "avg_scored": 0.71,
+      "avg_conceded": 1.29,
       "goals_list": [
-        4,
         0,
         0,
         1,
         0,
         1,
-        2
+        2,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 1.14,
+      "avg_scored": 0.86,
+      "avg_conceded": 1.43,
       "goals_list": [
-        2,
         3,
         0,
         1,
         0,
         1,
+        0,
+        1
+      ]
+    },
+    "exp_home": 0.95,
+    "exp_away": 0.98,
+    "exp_total": 1.93,
+    "home_under15": 75,
+    "away_under15": 74,
+    "home_under25": 93,
+    "away_under25": 92
+  },
+  {
+    "match_id": "mt_512726687",
+    "league": "Stoiximan Super League",
+    "date": "2026-11-29T15:30:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "OFI Crete",
+    "away_team": "APO Levadiakos",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.14,
+      "avg_conceded": 1.71,
+      "goals_list": [
+        2,
+        0,
+        3,
+        2,
+        1,
+        0,
         0
       ]
     },
-    "exp_home": 1.09,
-    "exp_away": 1.16,
-    "exp_total": 2.25,
-    "home_under15": 70,
-    "away_under15": 68,
-    "home_under25": 90,
-    "away_under25": 89
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 0.71,
+      "avg_conceded": 0.86,
+      "goals_list": [
+        0,
+        0,
+        0,
+        0,
+        3,
+        1,
+        1
+      ]
+    },
+    "exp_home": 0.91,
+    "exp_away": 1.07,
+    "exp_total": 1.98,
+    "home_under15": 77,
+    "away_under15": 71,
+    "home_under25": 94,
+    "away_under25": 91
+  },
+  {
+    "match_id": "mt_377145316",
+    "league": "Serie A",
+    "date": "2026-11-29T19:45:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "Como",
+    "away_team": "Juventus",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.57,
+      "avg_conceded": 0.57,
+      "goals_list": [
+        0,
+        3,
+        2,
+        3,
+        1,
+        0,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.57,
+      "avg_conceded": 1.14,
+      "goals_list": [
+        1,
+        0,
+        2,
+        0,
+        2,
+        2,
+        4
+      ]
+    },
+    "exp_home": 1.26,
+    "exp_away": 0.86,
+    "exp_total": 2.12,
+    "home_under15": 64,
+    "away_under15": 79,
+    "home_under25": 87,
+    "away_under25": 94
   },
   {
     "match_id": "mt_206963392",
@@ -2251,32 +1219,247 @@
         1,
         1,
         1,
-        1,
         3,
-        0
+        0,
+        1
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 2.0,
+      "avg_scored": 1.86,
       "avg_conceded": 0.43,
       "goals_list": [
-        3,
         1,
         0,
         5,
         1,
         2,
+        2,
         2
       ]
     },
-    "exp_home": 0.63,
-    "exp_away": 1.75,
-    "exp_total": 2.38,
-    "home_under15": 87,
-    "away_under15": 48,
+    "exp_home": 0.64,
+    "exp_away": 1.66,
+    "exp_total": 2.3,
+    "home_under15": 86,
+    "away_under15": 51,
     "home_under25": 97,
-    "away_under25": 74
+    "away_under25": 77
+  },
+  {
+    "match_id": "mt_643222384",
+    "league": "Serie B",
+    "date": "2026-11-29T18:30:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "Arezzo",
+    "away_team": "Pisa",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 0.57,
+      "avg_conceded": 1.14,
+      "goals_list": [
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.86,
+      "avg_conceded": 1.29,
+      "goals_list": [
+        3,
+        3,
+        1,
+        3,
+        0,
+        2,
+        1
+      ]
+    },
+    "exp_home": 0.78,
+    "exp_away": 1.54,
+    "exp_total": 2.32,
+    "home_under15": 82,
+    "away_under15": 54,
+    "home_under25": 96,
+    "away_under25": 80
+  },
+  {
+    "match_id": "mt_467000756",
+    "league": "Serie B",
+    "date": "2026-11-29T16:15:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "Sampdoria",
+    "away_team": "Cremonese",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 1.29,
+      "avg_conceded": 1.43,
+      "goals_list": [
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        3
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.29,
+      "avg_conceded": 0.86,
+      "goals_list": [
+        0,
+        1,
+        0,
+        2,
+        2,
+        4,
+        0
+      ]
+    },
+    "exp_home": 0.98,
+    "exp_away": 1.37,
+    "exp_total": 2.35,
+    "home_under15": 74,
+    "away_under15": 60,
+    "home_under25": 92,
+    "away_under25": 84
+  },
+  {
+    "match_id": "mt_512888277",
+    "league": "Serie B",
+    "date": "2026-11-29T14:00:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "Modena",
+    "away_team": "Padova",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 2.0,
+      "avg_conceded": 0.86,
+      "goals_list": [
+        3,
+        1,
+        3,
+        2,
+        1,
+        2,
+        2
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.14,
+      "avg_conceded": 1.14,
+      "goals_list": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1
+      ]
+    },
+    "exp_home": 1.63,
+    "exp_away": 0.9,
+    "exp_total": 2.53,
+    "home_under15": 52,
+    "away_under15": 77,
+    "home_under25": 78,
+    "away_under25": 94
+  },
+  {
+    "match_id": "mt_895452240",
+    "league": "Stoiximan Super League",
+    "date": "2026-11-29T19:00:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "AEK Athens",
+    "away_team": "PAOK",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 2.0,
+      "avg_conceded": 0.71,
+      "goals_list": [
+        1,
+        2,
+        3,
+        5,
+        0,
+        2,
+        1
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 2.0,
+      "avg_conceded": 1.29,
+      "goals_list": [
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        4
+      ]
+    },
+    "exp_home": 1.76,
+    "exp_away": 1.21,
+    "exp_total": 2.97,
+    "home_under15": 47,
+    "away_under15": 66,
+    "home_under25": 74,
+    "away_under25": 88
+  },
+  {
+    "match_id": "mt_466829415",
+    "league": "Serie A",
+    "date": "2026-11-29T11:30:00.000Z",
+    "date_key": "2026-11-29",
+    "home_team": "Udinese",
+    "away_team": "Fiorentina",
+    "home_form": {
+      "n_games": 7,
+      "avg_scored": 0.71,
+      "avg_conceded": 2.14,
+      "goals_list": [
+        1,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1
+      ]
+    },
+    "away_form": {
+      "n_games": 7,
+      "avg_scored": 1.71,
+      "avg_conceded": 2.0,
+      "goals_list": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        4,
+        2
+      ]
+    },
+    "exp_home": 1.15,
+    "exp_away": 2.07,
+    "exp_total": 3.22,
+    "home_under15": 68,
+    "away_under15": 39,
+    "home_under25": 89,
+    "away_under25": 66
   },
   {
     "match_id": "mt_739291120",
@@ -2301,197 +1484,25 @@
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.86,
-      "avg_conceded": 0.57,
-      "goals_list": [
-        0,
-        1,
-        1,
-        2,
-        5,
-        3,
-        1
-      ]
-    },
-    "exp_home": 0.9,
-    "exp_away": 1.65,
-    "exp_total": 2.55,
-    "home_under15": 77,
-    "away_under15": 51,
-    "home_under25": 94,
-    "away_under25": 77
-  },
-  {
-    "match_id": "mt_512888277",
-    "league": "Serie B",
-    "date": "2026-11-29T14:00:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "Modena",
-    "away_team": "Padova",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 1.0,
-      "goals_list": [
-        2,
-        3,
-        1,
-        3,
-        2,
-        1,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.14,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        1,
-        0,
-        1,
-        1,
-        2,
-        1,
-        2
-      ]
-    },
-    "exp_home": 1.77,
-    "exp_away": 0.99,
-    "exp_total": 2.76,
-    "home_under15": 47,
-    "away_under15": 74,
-    "home_under25": 74,
-    "away_under25": 92
-  },
-  {
-    "match_id": "mt_643222384",
-    "league": "Serie B",
-    "date": "2026-11-29T18:30:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "Arezzo",
-    "away_team": "Pisa",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        1,
-        0,
-        2,
-        0,
-        1,
-        0,
-        0
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 2.0,
-      "avg_conceded": 1.57,
-      "goals_list": [
-        2,
-        3,
-        3,
-        1,
-        3,
-        0,
-        2
-      ]
-    },
-    "exp_home": 0.9,
-    "exp_away": 2.04,
-    "exp_total": 2.94,
-    "home_under15": 77,
-    "away_under15": 40,
-    "home_under25": 94,
-    "away_under25": 67
-  },
-  {
-    "match_id": "mt_466829415",
-    "league": "Serie A",
-    "date": "2026-11-29T11:30:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "Udinese",
-    "away_team": "Fiorentina",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 0.57,
-      "avg_conceded": 2.14,
-      "goals_list": [
-        0,
-        1,
-        0,
-        0,
-        0,
-        2,
-        1
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 2.0,
-      "goals_list": [
-        1,
-        1,
-        1,
-        1,
-        2,
-        4,
-        2
-      ]
-    },
-    "exp_home": 1.05,
-    "exp_away": 2.09,
-    "exp_total": 3.14,
-    "home_under15": 72,
-    "away_under15": 38,
-    "home_under25": 91,
-    "away_under25": 65
-  },
-  {
-    "match_id": "mt_895452240",
-    "league": "Stoiximan Super League",
-    "date": "2026-11-29T19:00:00.000Z",
-    "date_key": "2026-11-29",
-    "home_team": "AEK Athens",
-    "away_team": "PAOK",
-    "home_form": {
-      "n_games": 7,
-      "avg_scored": 2.57,
+      "avg_scored": 2.71,
       "avg_conceded": 0.71,
       "goals_list": [
-        5,
+        1,
         1,
         2,
-        3,
         5,
-        0,
-        2
-      ]
-    },
-    "away_form": {
-      "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 1.29,
-      "goals_list": [
-        2,
         3,
         1,
-        2,
-        1,
-        2,
-        1
+        6
       ]
     },
-    "exp_home": 2.13,
-    "exp_away": 1.07,
-    "exp_total": 3.2,
-    "home_under15": 37,
-    "away_under15": 71,
-    "home_under25": 64,
-    "away_under25": 91
+    "exp_home": 1.01,
+    "exp_away": 2.23,
+    "exp_total": 3.24,
+    "home_under15": 73,
+    "away_under15": 35,
+    "home_under25": 92,
+    "away_under25": 61
   },
   {
     "match_id": "mt_022357097",
@@ -2502,39 +1513,39 @@
     "away_team": "Napoli",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.14,
+      "avg_scored": 1.0,
       "avg_conceded": 3.14,
       "goals_list": [
-        1,
         1,
         2,
         0,
         2,
         2,
+        0,
         0
       ]
     },
     "away_form": {
       "n_games": 7,
       "avg_scored": 1.71,
-      "avg_conceded": 1.29,
+      "avg_conceded": 1.14,
       "goals_list": [
-        1,
         3,
         0,
         3,
         4,
         0,
+        1,
         1
       ]
     },
-    "exp_home": 1.11,
-    "exp_away": 2.84,
-    "exp_total": 3.95,
-    "home_under15": 70,
-    "away_under15": 22,
-    "home_under25": 90,
-    "away_under25": 46
+    "exp_home": 0.94,
+    "exp_away": 2.81,
+    "exp_total": 3.75,
+    "home_under15": 76,
+    "away_under15": 23,
+    "home_under25": 93,
+    "away_under25": 47
   },
   {
     "match_id": "mt_511496545",
@@ -2545,16 +1556,16 @@
     "away_team": "Monza",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 2.71,
-      "avg_conceded": 1.29,
+      "avg_scored": 3.14,
+      "avg_conceded": 1.14,
       "goals_list": [
-        2,
         0,
         2,
         3,
         4,
         5,
-        3
+        3,
+        5
       ]
     },
     "away_form": {
@@ -2571,13 +1582,13 @@
         0
       ]
     },
-    "exp_home": 2.84,
-    "exp_away": 1.38,
-    "exp_total": 4.22,
-    "home_under15": 22,
-    "away_under15": 60,
-    "home_under25": 46,
-    "away_under25": 84
+    "exp_home": 3.17,
+    "exp_away": 1.26,
+    "exp_total": 4.43,
+    "home_under15": 18,
+    "away_under15": 64,
+    "home_under25": 39,
+    "away_under25": 87
   },
   {
     "match_id": "mt_150999048",
@@ -2588,39 +1599,39 @@
     "away_team": "Avellino",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 1.0,
-      "avg_conceded": 2.29,
+      "avg_scored": 1.29,
+      "avg_conceded": 2.14,
       "goals_list": [
-        1,
         1,
         2,
         1,
         1,
         1,
-        0
+        0,
+        3
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.43,
-      "avg_conceded": 1.14,
+      "avg_scored": 1.86,
+      "avg_conceded": 0.86,
       "goals_list": [
-        1,
         4,
         1,
         0,
         1,
         2,
-        1
+        1,
+        4
       ]
     },
-    "exp_home": 0.99,
-    "exp_away": 2.12,
-    "exp_total": 3.11,
+    "exp_home": 0.98,
+    "exp_away": 2.45,
+    "exp_total": 3.43,
     "home_under15": 74,
-    "away_under15": 37,
+    "away_under15": 30,
     "home_under25": 92,
-    "away_under25": 64
+    "away_under25": 56
   },
   {
     "match_id": "mt_733561759",
@@ -2631,39 +1642,39 @@
     "away_team": "Milan",
     "home_form": {
       "n_games": 7,
-      "avg_scored": 0.86,
-      "avg_conceded": 1.86,
+      "avg_scored": 0.71,
+      "avg_conceded": 2.14,
       "goals_list": [
-        1,
         1,
         0,
         0,
         2,
         1,
-        1
+        1,
+        0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 2.29,
-      "avg_conceded": 1.29,
+      "avg_scored": 2.57,
+      "avg_conceded": 1.43,
       "goals_list": [
-        3,
         1,
         3,
         2,
         2,
         3,
-        2
+        2,
+        5
       ]
     },
-    "exp_home": 0.94,
-    "exp_away": 2.36,
-    "exp_total": 3.3,
-    "home_under15": 76,
-    "away_under15": 32,
-    "home_under25": 93,
-    "away_under25": 58
+    "exp_home": 0.91,
+    "exp_away": 2.82,
+    "exp_total": 3.73,
+    "home_under15": 77,
+    "away_under15": 23,
+    "home_under25": 94,
+    "away_under25": 46
   },
   {
     "match_id": "mt_988230923",
@@ -2677,35 +1688,35 @@
       "avg_scored": 1.0,
       "avg_conceded": 2.14,
       "goals_list": [
-        0,
         1,
         3,
         0,
         1,
         1,
-        1
+        1,
+        0
       ]
     },
     "away_form": {
       "n_games": 7,
-      "avg_scored": 1.71,
-      "avg_conceded": 2.14,
+      "avg_scored": 2.29,
+      "avg_conceded": 2.43,
       "goals_list": [
-        0,
         3,
         2,
         4,
         2,
         0,
-        1
+        1,
+        4
       ]
     },
-    "exp_home": 1.48,
-    "exp_away": 2.09,
-    "exp_total": 3.57,
-    "home_under15": 56,
-    "away_under15": 38,
-    "home_under25": 81,
-    "away_under25": 65
+    "exp_home": 1.61,
+    "exp_away": 2.58,
+    "exp_total": 4.19,
+    "home_under15": 52,
+    "away_under15": 27,
+    "home_under25": 78,
+    "away_under25": 52
   }
 ]
